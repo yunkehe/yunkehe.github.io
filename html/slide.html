@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/slide.css">
+    <script src="../javascripts/jquery-1.9.1.js"></script>
+    <title>全屏侧滑</title>
+</head>
+<body>
+    <div class="slide left">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo illum ullam, eos debitis inventore nemo sunt distinctio doloremque sed repudiandae at, voluptate fugit asperiores eius explicabo pariatur assumenda, sapiente quaerat.
+    </div>
+    <div class="slide right">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta repudiandae delectus repellendus veniam laboriosam velit quas earum atque eum, nesciunt error, reprehenderit fugiat. Provident sit ipsum ullam optio libero debitis!
+    </div>
+    <span id="slideBtn">go</span>
+</body>
+    <script>
+    var $slideBtn = $("#slideBtn"),
+        $left = $(".left"),
+        $right = $(".right"),
+        flag = 0;
+
+    $slideBtn.click(function(){
+        $right.toggleClass('moveRight');
+        $left.toggleClass('moveLeft');
+    })
+    </script>
+</html>
