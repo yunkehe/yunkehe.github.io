@@ -55,3 +55,10 @@ body{
 #slideBtn:hover{
     cursor: pointer;
 }
+#svgAnimate{
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 55px;
+    height: 55px;
+}
