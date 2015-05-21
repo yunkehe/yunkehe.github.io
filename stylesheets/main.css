@@ -17,7 +17,7 @@ header,footer,p,h1{
     padding: 0;
 }
 body{
-    font: 62.5% "Quattrocento Sans","Arial",serif;
+    font: 62.5% "Wellfleet","Quattrocento Sans","Arial",serif;
     background-image: url(../images/header-bg.jpg);
     background-attachment: fixed;
     color:#fff;
@@ -25,8 +25,21 @@ body{
 a{
     text-decoration: none;
 }
+/*头部*/
+header{
+    width: 100%;
+    height: 80px;
+    background: url(../images/header-bg.png);
+    position: fixed;
+    top: 20px;
+}
+nav{
+    width: 1050px;
+    margin: 0 auto;
+}
 nav ul{
-    
+    display: inline-block;
+    float: right;
 }
 nav li{
     float: left;
@@ -34,13 +47,50 @@ nav li{
 nav li a{
     display: block;
     text-align: center;
-    padding: 1em;
+    padding: 0 1em;
     text-align: center;
     font-size: 2em;
+    line-height: 80px;
     color: #fff;
+}
+nav li a:hover{
+    color:coral;
+    text-decoration: underline;
 }
 footer p{
     text-align: right;
     font-size: 1.5em;
-    padding-right: 100px;
+    font-family: "Arial";
+    padding-right: 10px;
+}
+.wrapper>div{
+    height: 680px;
+}
+.slide1,.slide3,.slide5{
+    background-attachment: fixed;
+}
+.slide2,.slide4{
+    color: #444;
+}
+.slide1{
+    background-image: url(../images/slide1.jpg);
+}
+.slide2{
+    background-color: #fff;
+}
+.slide3{
+    background-image: url(../images/slide3.jpg);
+}
+.slide4{
+    background-color: #fff;
+}
+.slide5{
+    background-image: url(../images/slide5.jpg);
+}
+.quotoes{
+    font-size: 4em;
+    width: 1050px;
+    margin: 0 auto;
+    position: relative;
+    top: 40%;
 }
