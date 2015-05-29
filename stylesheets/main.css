@@ -58,7 +58,7 @@ nav li a:hover{
     text-decoration: underline;
 }
 nav li:hover ul{
-    height: 86px;
+    height: auto;
 }
 nav ul ul{
     height: 0;
