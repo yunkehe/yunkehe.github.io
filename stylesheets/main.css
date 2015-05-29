@@ -18,7 +18,7 @@ header,footer,p,h1{
 }
 body{
     font: 62.5% "Wellfleet","Quattrocento Sans","Arial",serif;
-    background-image: url(../images/header-bg.jpg);
+/*    background-image: url(../images/header-bg.jpg);*/
     background-attachment: fixed;
     color:#fff;
 }
@@ -57,11 +57,33 @@ nav li a:hover{
     color:coral;
     text-decoration: underline;
 }
+nav li:hover ul{
+    height: 86px;
+}
+nav ul ul{
+    height: 0;
+    overflow: hidden;
+    transition: height .3s ease-in;
+}
+nav li li{
+    float: none;
+}
+nav li li a{
+    line-height: 40px;
+    border-bottom: 3px solid #eee;
+    background-image: url(../images/background.png)
+}
+nav li li a:hover{
+    text-decoration: none;
+}
+footer{
+    padding: 1em 0;
+    background: #000;
+}
 footer p{
-    text-align: right;
+    text-align: center;
     font-size: 1.5em;
     font-family: "Arial";
-    padding-right: 10px;
 }
 .wrapper>div{
     height: 680px;
