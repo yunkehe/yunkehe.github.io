@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/slide.css">
     <script src="../javascripts/jquery-1.9.1.js"></script>
+    <!--[if lte IE 9]>
+    <script src="js/slide-js.ie8.js"></script>
+    <![endif]-->
+    <!--[if !IE]><!-->
+        <script>
+        $(document).ready(function(){
+        var $slideBtn = $("#slideBtn"),
+            $left = $(".left"),
+            $right = $(".right");
+
+        $slideBtn.click(function(){
+            $right.toggleClass('moveRight');
+            $left.toggleClass('moveLeft');
+        })
+        })
+        </script>
+    <!--<![endif]-->
     <title>全屏侧滑</title>
 </head>
 <body>
-    <div class="slide left">
+    <div class="slide left slideL">
        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo illum ullam, eos debitis inventore nemo sunt distinctio doloremque sed repudiandae at, voluptate fugit asperiores eius explicabo pariatur assumenda, sapiente quaerat.</p>
     </div>
-    <div class="slide right">
+    <div class="slide right slideR">
        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta repudiandae delectus repellendus veniam laboriosam velit quas earum atque eum, nesciunt error, reprehenderit fugiat. Provident sit ipsum ullam optio libero debitis!</p>
     </div>
     <span id="slideBtn">go</span>
@@ -20,15 +37,4 @@
 		</svg>
     </span>
 </body>
-    <script>
-    var $slideBtn = $("#slideBtn"),
-        $left = $(".left"),
-        $right = $(".right"),
-        flag = 0;
-
-    $slideBtn.click(function(){
-        $right.toggleClass('moveRight');
-        $left.toggleClass('moveLeft');
-    })
-    </script>
 </html>

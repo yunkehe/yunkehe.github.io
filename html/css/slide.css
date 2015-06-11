@@ -24,6 +24,7 @@ body{
     -webkit-transition:left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99);
     -moz-transition: left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99); /* Firefox 4 */
     -o-transition: left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99); /* Opera */
+    -ms-transition: left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99); /* Opera */
 }
 .right{
     background-color: #9cb3a8;
@@ -32,6 +33,7 @@ body{
     -webkit-transition:left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99);
     -moz-transition: left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99); /* Firefox 4 */
     -o-transition: left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99); /* Opera */
+    -ms-transition: left 1s cubic-bezier(0.91, 0.01, 0.6, 0.99); /* Opera */
 }
 .moveRight{
     left: 100%;
