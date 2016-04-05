@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas--basic</title>
+</head>
+<body>
+	<h1>2D context</h1>
+	<canvas id="drawing1" width="200" height="200">你的浏览器不支持canvas!</canvas>
+	<canvas id="drawing2" width="200" height="200">你的浏览器不支持canvas!</canvas>
+	<h1>绘制路径，绘制文本</h1>
+	<canvas id="drawing3" width="500" height="200">你的浏览器不支持canvas!</canvas>
+	<h1>变换</h1>
+	<canvas id="drawing4" width="200" height="200">你的浏览器不支持canvas!</canvas>
+</body>
+<script type="text/javascript">
+	var drawing1 = document.getElementById('drawing1');
+	var drawing2 = document.getElementById('drawing2');
+	var drawing3 = document.getElementById('drawing3');
+	var drawing4 = document.getElementById('drawing4');
+
+	if(drawing1.getContext){
+		var context = drawing1.getContext('2d');
+
+		// 设置描边线条宽度
+		context.lineWidth = 2;
+
+		// 绘制红色描边矩形
+		context.strokeStyle = '#ff0000';
+		context.strokeRect(10, 10, 50, 50);
+
+		// 绘制半透明的蓝色描边矩形
+		context.strokeStyle = 'rgba(0, 0, 255, 0.5)';
+		context.strokeRect(30, 30, 50, 50);
+
+		console.log(context)
+	}
+
+	if(drawing2.getContext){
+		var ctx = drawing2.getContext('2d');
+
+		ctx.fillStyle = '#ff0000';
+		ctx.fillRect(10, 10, 50, 50);
+
+		ctx.fillStyle = 'rgba(0, 0, 255, 0.5)';
+		ctx.fillRect(30, 30, 50, 50);
+
+		ctx.clearRect(40, 40, 10, 10);
+	}
+
+	// 绘制路径
+	if(drawing3.getContext){
+		var ctx = drawing3.getContext('2d');
+
+		ctx.beginPath();
+
+		ctx.arc(100, 100, 99, 0, 2*Math.PI, false);
+
+		// 移动路径
+		ctx.moveTo(194, 100);
+		ctx.arc(100, 100, 94, 0, 2*Math.PI, false);
+
+		ctx.moveTo(100, 100);
+		ctx.lineTo(100, 15);
+
+		ctx.moveTo(100, 100);
+		ctx.lineTo(35, 100);
+
+		ctx.stroke();
+
+		ctx.closePath();
+		// 确定画布上的某一点是否位于路径上
+		if( ctx.isPointInPath(100, 100) ){
+			console.log('Point (100, 100) is in the Path.');
+		}
+
+		// 绘制文本
+		ctx.font = 'bold 14px Arial';
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+		ctx.fillText('12', 100, 20);
+
+		ctx.font = 'bold 14px Arial';
+		ctx.textAlign = 'start';
+		ctx.textBaseline = 'middle';
+		ctx.fillText('12', 100, 40);
+
+		ctx.font = 'bold 14px Arial';
+		ctx.textAlign = 'end';
+		ctx.textBaseline = 'middle';
+		ctx.fillText('12', 100, 60);	
+
+		// measureText()
+		var fontSize = 100;
+		ctx.font = fontSize + 'px Arial';
+		ctx.textAlign = 'start';
+
+		while(ctx.measureText('Hello World!').width > 140){
+			fontSize--;
+			ctx.font = fontSize + 'px Arial';
+		}
+
+		ctx.fillText('Hello World!', 210, 10);
+		ctx.fillText('Font size is '+fontSize+'px', 210, 50);
+	}
+
+	// 变换
+	if(drawing4.getContext){
+		var ctx = drawing4.getContext('2d');
+
+		ctx.beginPath();
+
+		ctx.arc(100, 100, 99, 0, 2*Math.PI, false);
+
+		ctx.moveTo(194, 100);
+		ctx.arc(100, 100, 94, 0, 2*Math.PI, false);
+
+		// change original point
+		ctx.translate(100, 100);
+
+		// rotate 
+		ctx.rotate(1);
+		
+		// drawing minute hand
+		ctx.moveTo(0, 0);
+		ctx.lineTo(0, -85);
+
+		// drawing hour hand
+		ctx.moveTo(0, 0);
+		ctx.lineTo(-65, 0);
+
+		ctx.stroke();
+	}
+
+</script>
+</html>
