@@ -16,7 +16,8 @@
 	</div>
 	<h1>使用图像数据</h1>
 	<canvas id="drawing4" width="200" height="200">你的浏览器不支持canvas!</canvas>
-
+	<h1>合成</h1>
+	<canvas id="drawing5" width="200" height="200">你的浏览器不支持canvas!</canvas>
 </body>
 <script type="text/javascript">
 	var canvasElem = document.getElementsByTagName('canvas');
@@ -115,8 +116,21 @@
 		context.putImageData(imageData, 0, 0);
 	}
 
-	greyFilterDrawing(ctx2, image);
+	// greyFilterDrawing(ctx2, image);
 
+	// 合成
+	ctx5.fillStyle = '#ff0000';
+	ctx5.fillRect(10, 10, 50, 50);
+
+	ctx5.globalAlpha = 0.5;
+
+	//  下面代码 firefox 45.0.1失效
+	// ctx5.globalCompositeOperation = 'destionation-in';
+
+	ctx5.fillStyle = 'rgba(0, 0, 255, 1)';
+	ctx5.fillRect(30, 30, 50, 50);
+
+	ctx5.globalAlpha = 0;
 
 </script>
 </html>

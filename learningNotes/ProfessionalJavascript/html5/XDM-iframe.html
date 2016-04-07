@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨文档消息传递</title>
+</head>
+<body>
+    <h1>I'm a frame!</h1>
+</body>
+<script>
+    window.addEventListener('message', function(e){
+
+        var obj = {
+            'origin' : e.origin,
+            'data' : e.data,
+            'source' : e.source
+        }
+
+        console.log(obj)
+    })
+</script>
+</html>
