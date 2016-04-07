@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>hello 何珂!</title>
+	<title>Document</title>
 </head>
 <body>
-	<h1>hello heke!</h1>
+	<?php 
+	echo 'hello world';
+	 ?>
 </body>
 </html>
