@@ -1,43 +1,46 @@
 
-var $dragzone = $('.dragbox');
+var $dragImage = $('#dragImag');
+var $dragBox = $('.dragbox');
+var dragTarget;
 
-// 拖拽进入
-$dragzone.bind('dragenter', function(e){
-	e.stopPropagation();
-	e.preventDefault();
-	$(e.currentTarget).addClass('over');
+$dragImage.bind('dragstart', function(e){
+	console.log('dragstart')
 })
 
-// 拖拽在拖拽区域时
-$dragzone.bind('dragover',function(e){
+$dragImage.bind('dragend', function(e){
+	e.stopPropagation();
+	e.preventDefault();
 
-	// console.log(e.originalEvent.dataTransfer)
-	// 设置拖拽时 鼠标提
-	e.originalEvent.dataTransfer.dropEffect = 'copy';
+	var $target = $(e.currentTarget);
+	dragTarget = $target.remove();
+	console.log(dragTarget)
+});
+
+$dragBox.bind('dragenter', function(e){
 
 	e.stopPropagation();
 	e.preventDefault();
+	//$(e.currentTarget).addClass('over');
+
 })
 
-// 释放拖拽
-$dragzone.bind('drop', function(e){
+$dragBox.bind('dragover', function(e){
+	e.stopPropagation();
+	e.preventDefault();
+});
 
-	var files = e.originalEvent.dataTransfer.files;
+$dragBox.bind('drop', function(e){
+
 
 	e.stopPropagation();
 	e.preventDefault();
-	$(e.currentTarget).removeClass('over');
-	
-	for(var i=0; i<files.length; i++){
-		alert(files[i].name)
-	}
-})
+	//e.origin.dataTranfer
+	//被拖动目标 dragend事件 和放置目标drop事件同时触发
 
-// 拖拽离开
-$dragzone.bind('dragleave', function(e){
+	setTimeout(function(){
+		$(e.currentTarget).append(dragTarget);
+	},50)
 
-	e.stopPropagation();
-	e.preventDefault();
-	$(e.currentTarget).toggleClass('over');
+	//$(e.currentTarget).removeClass('over');
 
 })
