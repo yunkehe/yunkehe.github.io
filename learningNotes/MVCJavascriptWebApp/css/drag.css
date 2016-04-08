@@ -1,0 +1,8 @@
+.dragbox{
+	width: 400px;
+	height: 400px;
+	background-color: #F1EED1;
+}
+.over{
+	background: rgba(0, 0, 255, 0.5);
+}

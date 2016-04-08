@@ -1,0 +1,15 @@
+/* 
+* @Author: anchen
+* @Date:   2016-03-16 15:15:39
+* @Last Modified by:   anchen
+* @Last Modified time: 2016-03-16 15:18:56
+*/
+.tab.active{
+    background-color: blue;
+    color: #fff;
+}
+.box.active{
+    border: 1px solid #666;
+    width: 200px;
+    height: 200px;
+}
