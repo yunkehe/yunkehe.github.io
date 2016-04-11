@@ -1,4 +1,3 @@
-
 var $dragImage = $('#dragImag');
 var $dragImage = $('.dragTarget');
 
