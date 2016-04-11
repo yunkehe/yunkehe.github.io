@@ -1,7 +1,6 @@
 /**
  * Created by yunkehe on 2016/4/8.
  */
-
 var $dragzone = $('.dragbox');
 
 // 拖拽进入

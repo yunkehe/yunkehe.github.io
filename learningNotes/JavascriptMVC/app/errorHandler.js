@@ -1,7 +1,6 @@
 /**
  * Created by Administrator on 2016/4/10.
  */
-
 //try{
 //    window.someNoneexistentFunction();
 //}catch (error){
