@@ -90,3 +90,29 @@ var url = 'http://www.somedomain.com';
 var newUrl = addQueryStringArg(url, 'redir', 'http://www.somedomain.com?a=b&c=d');
 
 console.log(newUrl);
+
+var mods = [];
+
+for(var i=0,len=mods.length; i<len; i++){
+    try{
+        mods[i].init();
+    }catch(ex){
+        // 处理错误
+        logError("nonfatal", "Module init failed: " + ex.message);
+    }
+}
+
+
+function logError(sev, msg){
+
+    var img = new Image();;
+
+    img.src = "log.php?sev=" + encodeURIComponent(sev) + "&msg=" + encodeURIComponent(msg);
+}
+
+function assert(condtion, message){
+
+    if(!condtion){
+        throw new Error(message);
+    }
+}
