@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高级技巧</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 检测类型
+	var str = "hello",
+		num = 10,
+		arr = [],
+		obj = {};
+
+	console.log(Object.prototype.toString.call(str))
+
+	// 作用域安全的构造函数
+	function Person(name, age, job){
+		if(this instanceof Person){
+			this.name = name;
+			this.age = age;
+			this.job = job;
+		}else{
+			return new Person(name, age, job);
+		}
+	}
+
+	var person1 = Person("heke", 25, "web developer");
+	
+	// 窃取
+	function Polygon(sides){
+		if(this instanceof Polygon){
+			this.sides = sides;
+			this.getArea = function(){
+				return 0;
+			}
+		}else{
+			return new Polygon(sides);
+		}
+	}
+
+	function Rectangle(width, height){
+		console.log("new this: ", this)
+		Polygon.call(this, 2);
+
+		this.width = width;
+		this.height = height;
+		this.getArea = function(){
+			return this.width * this.height;
+		}
+	}
+
+	Rectangle.prototype = new Polygon();
+
+	var rect = new Rectangle(5, 10);
+	alert("Rectangle sides: "+rect.sides)
+
+</script>
+</html>
