@@ -5,7 +5,7 @@
 	<title>高级技巧</title>
 </head>
 <body>
-	
+	<button id="my-btn">函数绑定</button>
 </body>
 <script type="text/javascript">
 	// 检测类型
@@ -55,7 +55,71 @@
 	Rectangle.prototype = new Polygon();
 
 	var rect = new Rectangle(5, 10);
-	alert("Rectangle sides: "+rect.sides)
+	// alert("Rectangle sides: "+rect.sides)
+
+	// 惰性载入
+
+	// 函数绑定
+	var handler = {
+		message: "Event hanlded",
+
+		handleClick : function(event){
+			alert(this.message);
+		}
+	}
+
+	var btn = document.getElementById("my-btn");
+	// btn.addEventListener("click", function(event){
+	// 	handler.handleClick(event);
+	// })
+
+	function bind(fn, context){
+		return function(){
+			return fn.apply(context, arguments);
+		}
+	}
+
+	btn.addEventListener("click", bind(handler.handleClick, handler));
+
+</script>
+<script type="text/javascript">
+	// 函数柯里化
+	function curry(fn, context){
+		var args = Array.prototype.slice.call(arguments, 2);
+
+		return function(){
+			console.log('inner arguments: ', arguments)
+			var innerArgs = Array.prototype.slice.call(arguments);
+			var finalArgs = args.concat(innerArgs);
+
+			return fn.apply(context, finalArgs);
+		}
+	}
+
+	function add(num1, num2){
+		return num1 + num2;
+	}
+
+	var curriedAdd = curry(add, null, 5);
+	console.log(curriedAdd(3));
+
+</script>
+<script type="text/javascript">
+	var person = {
+		"name":"heke"
+	}
+
+	Object.preventExtensions(person);
+	person.age = 18;
+	// 判断对象是否可扩展
+	Object.isExtensible(person)
+
+	// 密封对象
+	Object.seal(person)
+	Object.isSealed(person);
+
+	// 冻结对象
+	Object.freeze(person);
 
 </script>
 </html>
