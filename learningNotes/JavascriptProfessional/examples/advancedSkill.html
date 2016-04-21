@@ -121,5 +121,48 @@
 	// 冻结对象
 	Object.freeze(person);
 
+	// 定时器
+	setTimeout(function(){
+		// 处理中
+		setTimeout(arguments.callee, interval);
+	}, interval);
+
+	function chunk(array, process, context){
+		setTimeout(function(){
+			var item = array.shift();
+			process.call(context, item);
+
+			if(array.length > 0){
+				setTimeout(arguments.callee, 100);
+			}
+		}, 100)
+	}
+
+	// 函数节流
+	var processor = {
+		timeoutId:null,
+
+		performProcessing:function(){
+			// 实际执行的代码 
+		},
+
+		process:function(){
+			clearTimeout(this.timeoutId);
+
+			var that = this;
+			this.timeoutId = setTimeout(function(){
+				that.performProcessing();
+			}, 100)
+		}
+	}
+	
+	processor.process();
+
+	function throttle(method, context){
+		clearTimeout(method.tId);
+		method.tId = setTimeout(function(){
+			method.call(context);
+		}, 100)
+	}
 </script>
 </html>
