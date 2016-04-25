@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义事件</title>
+</head>
+<body>
+		
+</body>
+<script type="text/javascript">
+	// 寄生组合类型
+	function inheritPrototype(subType, superType){
+		var prototype = Object(superType.prototype);
+		prototype.constructor = subType;
+		subType.prototype = prototype;
+	}
+
+	function EventTarget(argument) {
+		this.handlers = {};
+	}
+
+	EventTarget.prototype = {
+		constructor : EventTarget,
+		addHandler : function(type, handler){
+			if(typeof this.handlers[type] == 'undefined'){
+				this.handlers[type] = [];
+			}
+			this.handlers[type].push(handler);
+		},
+
+		fire : function(event){
+			if(!event.target){
+				event.target = this;
+			}
+			if(this.handlers[event.type] instanceof Array){
+				var handlers = this.handlers[event.type];
+				for(var i=0, len=handlers.length; i<len; i++){
+					handlers[i](event);
+				}
+			}
+		},
+
+		removeHandler : function(type, handler){
+			if(this.handlers[type] instanceof Array){
+				var handlers = this.handlers[type];
+				for(var i=0, len = handlers.length; i<len; i++){
+					if(handlers[i] === handler){
+						break;
+					}
+				}
+				handlers.splice(i, 1);
+			}
+		}
+	}
+
+	function handleMessage(event){
+		alert("Message received: " + event.message);
+	}
+
+	var target = new EventTarget();
+
+	target.addHandler("message", handleMessage);
+
+	target.fire({"type":"message", "message":"hello heke"});
+	target.removeHandler("message", handleMessage);
+	target.fire({"type":"message", "message":"hello heke"})
+
+	function Person(name, age){
+		EventTarget.call(this);
+
+		this.name = name;
+		this.age = age;
+	}
+
+	inheritPrototype(Person, EventTarget);
+	
+	Person.prototype.say = function(message){
+		this.fire({"type":"message", "message":message});
+	}
+
+	function handleMessage(event){
+		alert(event.target.name + " says: " + event.message);
+	}
+
+	var person = new Person("heke", 25);
+	person.addHandler("message", handleMessage);
+
+	person.say("Hi there.")
+</script>
+</html>

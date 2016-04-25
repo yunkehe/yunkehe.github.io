@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖放</title>
+	<style type="text/css">
+	div{
+		width: 200px;
+		height: 200px;
+		background-color: #ff0;
+		position: absolute;
+	}
+	.draggable{
+		background-color: #f00;
+	}
+	</style>
+</head>
+<body>
+	<div id="mydiv"></div>
+	<div class="draggable" id="testDiv"></div>
+</body>
+<script type="text/javascript">
+	// document.addEventListener("mousemove", function (event) {
+	// 	var myDiv = document.getElementById("mydiv");
+	// 	mydiv.style.left = event.clientX-100 + "px";
+	// 	mydiv.style.top = event.clientY-100 + "px";
+	// })
+
+	var DragDrop = function(){
+
+		var dragging = null;
+
+		function handleEvent(event){
+
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+
+			switch(event.type){
+				case "mousedown":
+					if(target.className.indexOf("draggable")>-1){
+						dragging = target;
+					}
+					break;
+				case "mousemove":
+					if(dragging !== null){
+						var width = dragging.style.width,
+							height = dragging.style.height;
+
+							// console.log(width, height)
+						dragging.style.left = event.clientX - 100 + "px";
+						dragging.style.top = event.clientY - 100 + "px";
+					};
+					break;
+				case "mouseup":
+					dragging = null;
+					break;
+			}
+		}
+
+		return {
+			enable : function(id){
+				var div = document.getElementById(id)
+				div.addEventListener("mousedown", handleEvent);
+				div.addEventListener("mouseup", handleEvent);
+				div.addEventListener("mousemove", handleEvent);
+			},
+
+			disable : function(id){
+				var div = document.getElementById(id)
+				div.removeEventListener("mousedown", handleEvent);
+				div.removeEventListener("mouseup", handleEvent);
+				div.removeEventListener("mousemove", handleEvent);
+			}
+		}
+	}
+
+	DragDrop().enable("testDiv")
+
+</script>
+</html>
