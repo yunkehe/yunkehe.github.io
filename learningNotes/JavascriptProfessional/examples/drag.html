@@ -25,10 +25,50 @@
 	// 	mydiv.style.left = event.clientX-100 + "px";
 	// 	mydiv.style.top = event.clientY-100 + "px";
 	// })
+	function EventTarget(argument) {
+		this.handlers = {};
+	}
+
+	EventTarget.prototype = {
+		constructor : EventTarget,
+		addHandler : function(type, handler){
+			if(typeof this.handlers[type] == 'undefined'){
+				this.handlers[type] = [];
+			}
+			this.handlers[type].push(handler);
+		},
+
+		fire : function(event){
+			if(!event.target){
+				event.target = this;
+			}
+			if(this.handlers[event.type] instanceof Array){
+				var handlers = this.handlers[event.type];
+				for(var i=0, len=handlers.length; i<len; i++){
+					handlers[i](event);
+				}
+			}
+		},
+
+		removeHandler : function(type, handler){
+			if(this.handlers[type] instanceof Array){
+				var handlers = this.handlers[type];
+				for(var i=0, len = handlers.length; i<len; i++){
+					if(handlers[i] === handler){
+						break;
+					}
+				}
+				handlers.splice(i, 1);
+			}
+		}
+	}
 
 	var DragDrop = function(){
 
-		var dragging = null;
+		var dragdrop = new EventTarget();
+		var dragging = null,
+			diffX = 0,
+			diffY = 0;
 
 		function handleEvent(event){
 
@@ -39,6 +79,17 @@
 				case "mousedown":
 					if(target.className.indexOf("draggable")>-1){
 						dragging = target;
+
+						diffX = event.clientX - target.offsetLeft;
+						diffY = event.clientY - target.offsetTop;
+						// console.log(diff)
+						var e = {
+									"type":"dragstart", 
+									"target":dragging, 
+									"x" : event.clientX,
+									"y" :event.clientY
+								}
+						dragdrop.fire(e);
 					}
 					break;
 				case "mousemove":
@@ -46,35 +97,65 @@
 						var width = dragging.style.width,
 							height = dragging.style.height;
 
-							// console.log(width, height)
-						dragging.style.left = event.clientX - 100 + "px";
-						dragging.style.top = event.clientY - 100 + "px";
+							console.log(diffX, diffY)
+						dragging.style.left = event.clientX - diffX + "px";
+						dragging.style.top = event.clientY -diffY + "px";
+						var e = {
+									"type":"drag", 
+									"target":dragging, 
+									"x" : event.clientX,
+									"y" :event.clientY
+								}
+						dragdrop.fire(e);
 					};
 					break;
 				case "mouseup":
 					dragging = null;
+					var e = {
+								"type":"dragend", 
+								"target":dragging, 
+								"x" : event.clientX,
+								"y" :event.clientY
+							}
+					dragdrop.fire(e);
 					break;
 			}
 		}
 
-		return {
-			enable : function(id){
-				var div = document.getElementById(id)
-				div.addEventListener("mousedown", handleEvent);
-				div.addEventListener("mouseup", handleEvent);
-				div.addEventListener("mousemove", handleEvent);
+		
+		dragdrop.enable = function(id){
+				var target = document.getElementById(id);
+				target.addEventListener("mousedown", handleEvent);
+				target.addEventListener("mouseup", handleEvent);
+				target.addEventListener("mousemove", handleEvent);
 			},
 
-			disable : function(id){
-				var div = document.getElementById(id)
-				div.removeEventListener("mousedown", handleEvent);
-				div.removeEventListener("mouseup", handleEvent);
-				div.removeEventListener("mousemove", handleEvent);
+		dragdrop.disable = function(id){
+				var target = document.getElementById(id);
+				target.removeEventListener("mousedown", handleEvent);
+				target.removeEventListener("mouseup", handleEvent);
+				target.removeEventListener("mousemove", handleEvent);
 			}
-		}
-	}
+		
+		return dragdrop;
+	}();
 
-	DragDrop().enable("testDiv")
+	// 初始化拖动元素
+	DragDrop.enable("testDiv");
+
+	DragDrop.addHandler("dragstart", function(event){
+		// var status = document.getElementById("testDiv");
+	})
+
+	DragDrop.addHandler("drag", function(event){
+		// var status = document.getElementById("testDiv");
+	})
+	
+	DragDrop.addHandler("dragend", function(event){
+		// var status = document.getElementById("testDiv");
+	})
+
+	DragDrop.disable("testDiv");
 
 </script>
 </html>
