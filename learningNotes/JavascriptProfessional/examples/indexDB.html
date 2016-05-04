@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>indexDB</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var indexDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB|| window.webkitIndexedDB;
+	var request, database;
+
+	request = indexDB.open("admin");
+	request.onerror = function (event) {
+		alert("Request indexDB error" + event.target.errorCode);
+	}
+
+	request.onsuccess = function(event){
+		database = event.target.result;
+	}
+
+</script>
+</html>

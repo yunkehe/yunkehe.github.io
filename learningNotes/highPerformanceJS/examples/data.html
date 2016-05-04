@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据存储</title>
+</head>
+<body>
+</body>
+<script type="text/javascript" >
+	function execute(code){
+		eval(code);
+
+		function subroutine(){
+			return window;
+		}
+
+		var w = subroutine();
+		console.log(w);
+	}
+
+	execute("var window = {};");
+
+</script>
+</html>
