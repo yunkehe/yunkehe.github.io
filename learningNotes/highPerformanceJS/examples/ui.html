@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>UI</title>
+</head>
+<body>
+	<p>Javascript任务必须尽快结束。</p>
+	<p>+new Date()</p>
+</body>
+<script type="text/javascript">
+	function processArray(items, process, callback) {
+		var todo = items.concat();
+
+		setTimeout(function () {
+			process( todo.shift() );
+
+			if(todo.length > 0){
+				setTimeout(arguments.callee, 25);
+			}else{
+				callback();
+			}
+		}, 25);	
+	}
+
+	var arr = ["0", "10","50"];
+	var sum = 0;
+	for(var i=0,len=arr.length; i<len; i++){
+		sum += +arr[i];
+	}
+	console.log("sum之和：", sum);
+</script>
+</html>
