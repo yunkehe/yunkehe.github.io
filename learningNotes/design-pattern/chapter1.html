@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript 设计模式</title>
+	<style type="text/css">
+		p{
+			text-indent: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h4>1. Javascript的灵活性</h4>
+	<h4>2. 函数是一等对象</h4>
+	<p>函数运行在定义它的作用域中，而不是调用它的作用域中。(词法作用域)</p>
+</body>
+<script type="text/javascript">	
+	Function.prototype.method = function(name, fn){
+		this.prototype[name] = fn;
+		return this;
+	}
+
+	function Anima () {
+		// body...
+		this.name = "Anima";
+	}
+
+	Anima.prototype = {
+		start : function(){},
+		stop : function(){},
+	}
+
+
+	Anima.method("say", function(){
+		alert(this.name);
+	}).method("talk", function(){
+		alert("talk")
+	})
+
+	var a = new Anima();
+
+	// 词法作用域
+	var baz;
+
+	(function(){
+		var a = 10,
+			b = 2;
+
+		baz = function(){
+			alert(a*b);
+		}
+	})()
+
+	baz();
+</script>
+</html>
