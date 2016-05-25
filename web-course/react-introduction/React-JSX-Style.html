@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React-JSX-Style</title>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<script src="http://cdn.bootcss.com/react/15.1.0/react.min.js"></script>
+	<script src="http://cdn.bootcss.com/react/15.1.0/react-dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+	<h4>reactjs入门</h4>
+	<div id="container"></div>
+</body>
+<script type="text/babel">
+	var Hello = React.createClass({
+
+		getInitialState : function(){
+			return {
+				fontSize : "30px",
+				color : "skyblue"
+			}
+		},
+
+		componentWillMount : function(){
+			alert("will");
+		},
+
+		componentDidMount : function(){
+			alert("did");
+		},
+
+		render : function(){
+			return <div style={this.state}>Hello {this.props.name}</div>;
+		}
+	})
+
+	ReactDOM.render(
+	<Hello name="heke" />,
+	document.getElementById("container") )
+</script>
+</html>
