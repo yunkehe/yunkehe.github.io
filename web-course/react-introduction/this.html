@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>about this</title>
+</head>
+<body>
+	<p>setTimeout中调用function, this指向window对象,可通过bind方法绑定this.</p>
+</body>
+<script type="text/javascript">
+	function test(){
+		console.log(this);
+	}
+	var obj = {
+		"name" : "obj",
+		test : function(){
+			console.log("hello", this)
+		}
+	}
+	
+	obj.test()
+	setTimeout(obj.test.bind(obj), 500);
+</script>
+</html>

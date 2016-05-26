@@ -11,6 +11,7 @@
 <body>
 	<h4>reactjs入门</h4>
 	<div id="container"></div>
+	<div id="content"></div>
 </body>
 <script type="text/babel">
 	var Hello = React.createClass({
@@ -23,17 +24,79 @@
 		},
 
 		componentWillMount : function(){
-			alert("will");
+			console.log("will");
 		},
 
 		componentDidMount : function(){
-			alert("did");
+			console.log("did");
+			// after mount setState
+			setTimeout(function(){
+				this.setState({
+					fontSize : "18px",
+					color : "red"
+				}) 
+			}.bind(this), 1000)
 		},
 
 		render : function(){
 			return <div style={this.state}>Hello {this.props.name}</div>;
 		}
 	})
+	
+	var ButtonComponent = React.createClass({
+		
+		// 处理显示隐藏
+		handleClick : function(e){
+			// var tip = React.findDOMNode(this.refs.tip); 已弃用findDOMNode方法
+			var tip = this.refs.tip;
+			console.log(tip)
+			if( tip.style.display == "none"){
+				tip.style.display = "inline";
+			}else{
+				tip.style.display = "none";
+			}
+		},
+
+		render : function(){
+			return (
+				<div>
+					<button onClick={this.handleClick}>show | hide</button><span ref="tip">显示隐藏test</span>
+				</div>
+			)
+		}
+	})
+	
+	var InputComponent = React.createClass({
+		
+		getInitialState : function(){
+			return {
+				inputText : ""
+			}
+		},
+
+		handleChange : function(e){
+			this.setState({
+				inputText : e.target.value
+			})
+		},
+
+		render : function(){
+			return (
+				<div>
+					<input onChange={this.handleChange} /><span>{this.state.inputText}</span>
+				</div>
+			)
+		}
+	})
+
+	ReactDOM.render(
+		<div>
+			<ButtonComponent />	
+			<br />
+			<InputComponent />
+		</div>,
+		document.getElementById("content")
+	)
 
 	ReactDOM.render(
 	<Hello name="heke" />,
