@@ -31,14 +31,14 @@ module.exports = function (grunt) {
         files : [{
                   expand : true,
                   cwd : '<%= config.app %>/',
-                  src : '*.js',
+                  src : '*.html',
                   dest : '<%= config.dist %>/',
                   ext : '.min.html',
                   extDot : 'first',
                   flatten : true,
-                  rename : function(dest, src){
-                    return dest + 'js/' + src;
-                  }
+                  // rename : function(dest, src){
+                  //   return dest + 'js/' + src;
+                  // }
                 }]
       }
     },
