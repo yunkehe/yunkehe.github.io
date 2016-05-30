@@ -31,9 +31,9 @@ module.exports = function (grunt) {
         files : [{
                   expand : true,
                   cwd : '<%= config.app %>/',
-                  src : '*.html',
+                  src : '*.js',
                   dest : '<%= config.dist %>/',
-                  ext : '.mim.html',
+                  ext : '.min.html',
                   extDot : 'first',
                   flatten : true,
                   rename : function(dest, src){
