@@ -1,0 +1,32 @@
+{
+  "name": "yo-beginner",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.1",
+    "jquery": "~2.1.0",
+    "backbone": "~1.1.0",
+    "requirejs": "~2.1.10",
+    "requirejs-text": "~2.0.10",
+    "modernizr": "~2.7.1",
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {},
+  "description": "learn yeoman",
+  "main": "app",
+  "keywords": [
+    "no"
+  ],
+  "authors": [
+    "yunkehe"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
