@@ -54,8 +54,22 @@ module.exports = function (grunt) {
         //   return !grunt.file.isDir(filePath);
         // }
       }
+    },
+
+    connect : {
+      server : {
+        options : {
+          port : 9001,
+          hostname : "localhost",
+          // 保存连接打开
+          keepalive : true,
+          base: config.app
+        }
+      }
     }
    
   });
+  
+  grunt.loadNpmTasks('grunt-contrib-connect');
   
 };
