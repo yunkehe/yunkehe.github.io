@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>learn-bootstrap</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        #Tooltip-box{
+            margin: 10px 50px;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+<!-- 按钮组 -->
+<div class="btn-group">
+    <button class="btn btn-default">课前导学</button>
+    <button class="btn btn-default">课堂教学</button>
+    <button class="btn btn-default">课后作业</button>
+</div>
+
+<!-- Tooltip -->
+<div id="Tooltip-box">
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="I want u to left!">go to left</button>
+    <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="I want u to top!">go to left</button>
+    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="I want u to bottom!">go to left</button>
+</div>
+
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    // 启动tooltip
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+</body>
+</html>
