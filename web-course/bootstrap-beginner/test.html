@@ -13,36 +13,196 @@
     <![endif]-->
 
     <style>
-        #Tooltip-box{
-            margin: 10px 50px;
+        body{
+            padding-top: 50px;
         }
-       
+        .carousel{
+            height: 500px;
+            background-color: #000;
+        }
+        .carousel .item{
+            height: 500px;
+            background-color: #000;
+        }
+        .carousel .item img{
+            width: 100%;
+        }
     </style>
 
 </head>
 
 <body>
-<!-- 按钮组 -->
-<div class="btn-group">
-    <button class="btn btn-default">课前导学</button>
-    <button class="btn btn-default">课堂教学</button>
-    <button class="btn btn-default">课后作业</button>
+<!-- 导航条 -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- container -->
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">浏览器</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">综述</a></li>
+        <li><a href="#">简述</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">特点 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!-- <li class="dropdown-header">dropdown-header</li> -->
+            <li><a href="#">Chrome</a></li>
+            <li><a href="#">Firefox</a></li>
+            <li><a href="#">Safari</a></li>
+            <li><a href="#">Opera</a></li>
+            <li><a href="#">IE</a></li>
+          </ul>
+        </li>
+        <li><a href="#">关于</a></li>
+
+      </ul>
+    
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- 图片轮播 -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="images/chrome-big.jpg" alt="Chrome">
+      <div class="carousel-caption">
+        <h1>Chrome</h1>
+
+        <p>Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。</p>
+
+        <p><a class="btn btn-lg btn-primary" href="http://www.google.cn/intl/zh-CN/chrome/browser/"
+              role="button" target="_blank">点我下载</a></p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="images/firefox-big.jpg" alt="firefox">
+      <div class="carousel-caption">
+        <div class="carousel-caption">
+            <h1>Firefox</h1>
+
+            <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器。</p>
+
+            <p><a class="btn btn-lg btn-primary" href="http://www.firefox.com.cn/download/" target="_blank"
+                  role="button">点我下载</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="images/safari-big.jpg" alt="safari">
+      <div class="carousel-caption">
+        <div class="carousel-caption">
+                    <h1>Safari</h1>
+
+                    <p>Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器。</p>
+
+                    <p><a class="btn btn-lg btn-primary" href="http://www.apple.com/cn/safari/" target="_blank"
+                          role="button">点我下载</a></p>
+                </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="images/opera-big.jpg" alt="opera">
+      <div class="carousel-caption">
+        <div class="carousel-caption">
+                    <h1>Opera</h1>
+
+                    <p>Opera浏览器，是一款挪威Opera Software ASA公司制作的支持多页面标签式浏览的网络浏览器。</p>
+
+                    <p><a class="btn btn-lg btn-primary" href="http://www.opera.com/zh-cn" target="_blank"
+                          role="button">点我下载</a></p>
+                </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="images/ie-big.jpg" alt="IE">
+      <div class="carousel-caption">
+        
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">上一页</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">下一页</span>
+  </a>
+</div>
+<!-- 三栏布局 -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+                <img src="images/chrome-logo-small.jpg">
+                <h2>Chrome</h2>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
 </div>
 
-<!-- Tooltip -->
-<div id="Tooltip-box">
-    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="I want u to left!">go to left</button>
-    <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="I want u to top!">go to left</button>
-    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="I want u to bottom!">go to left</button>
-</div>
-
-</div>
+</body>
 
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
     // 启动tooltip
     $(function () { $("[data-toggle='tooltip']").tooltip(); });
+    $('.carousel').carousel({
+      interval: 2000
+    })
+
+    var navigator_data = [
+        {"name" : "Chrome",
+        "caption" : "Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。",
+        "bgSrc" : "images/chrome-big.jpg",
+        "logoSrc" : "images/chrome-logo-small.jpg",
+        "mdSrc" : "images/chrome-logo.jpg"},
+        {"name" : "Firefox",
+        "caption" : "Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器。",
+        "bgSrc" : "images/firefox-big.jpg",
+        "logoSrc" : "images/firefox-logo-small.jpg",
+        "mdSrc" : "images/firefox-logo.jpg"},
+        {"name" : "Safari",
+        "caption" : "Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器。",
+        "bgSrc" : "images/safari-big.jpg",
+        "logoSrc" : "images/safari-logo-small.jpg",
+        "mdSrc" : "images/safari-logo.jpg"},
+        {"name" : "opera",
+        "caption" : "Opera浏览器，是一款挪威Opera Software ASA公司制作的支持多页面标签式浏览的网络浏览器。",
+        "bgSrc" : "images/opera-big.jpg",
+        "logoSrc" : "images/opera-logo-small.jpg",
+        "mdSrc" : "images/opera-logo.jpg"},
+        {"name" : "IE",
+        "caption" : "Internet Explorer，简称 IE，是微软公司推出的一款网页浏览器。",
+        "bgSrc" : "images/ie-big.jpg",
+        "logoSrc" : "images/ie-logo-small.jpg",
+        "mdSrc" : "images/ie-logo.jpg"}]
+        
 </script>
 </body>
 </html>
