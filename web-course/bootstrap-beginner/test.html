@@ -72,11 +72,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">特点 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <!-- <li class="dropdown-header">dropdown-header</li> -->
-            <li><a href="#">Chrome</a></li>
-            <li><a href="#">Firefox</a></li>
-            <li><a href="#">Safari</a></li>
-            <li><a href="#">Opera</a></li>
-            <li><a href="#">IE</a></li>
+            <li><a href="#tab-chrome"  class="show-tab">Chrome</a></li>
+            <li><a href="#tab-firefox"  class="show-tab">Firefox</a></li>
+            <li><a href="#tab-safari"  class="show-tab">Safari</a></li>
+            <li><a href="#tab-opera"  class="show-tab">Opera</a></li>
+            <li><a href="#tab-ie"  class="show-tab">IE</a></li>
           </ul>
         </li>
         <li><a href="#" data-toggle="modal" data-target="#about">关于</a></li>
@@ -329,10 +329,11 @@
       interval: 2000
     })
 
-
-    $('#navigator-tabs a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
+    $(".show-tab").click(function (e) {
+        // body...
+        var href = $(this).attr("href")
+        $('#navigator-tabs a[href="'+href+'"]').tab('show') 
+        
     })
 
     var navigator_data = [
