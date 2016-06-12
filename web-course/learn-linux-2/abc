@@ -1,0 +1,13 @@
+learn linux 
+edited by heke
+vim + filename
+打开文件 光标定位到第一行
+vim +/heke filename
+打开文件 光标定位到heke第一次出现的地方
+vim aa bb cc 
+一次创建多个文件
+:n 
+切换到下一个打开的文件
+:N 或者 :prev
+切换到上一个打开的文件
+
