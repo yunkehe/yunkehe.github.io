@@ -68,3 +68,17 @@ sublime
 # 工作任务
 ### bootstrap Tooltip 插件源码学习
 ### 基于bootstrap的个人网站
+
+# vultr 
+1. 免费域名注册 (goodbike.ga)
+2. 
+
+#### 待学
+1. linux学习计划2
+2. git学习
+3. node.js包教不包会
+
+#### 任务
+1. 让node服务一直启动
+
+
