@@ -13,72 +13,27 @@
     3. 任务查看
 }
 
-1. UI{
-}
-2. bootstrap{
-    
-}
-3. {
-    logo on my way(logo OK)
-}
+2. bootstrap
 
-task
-1. 学习bootstrap
-2. 应用bootstrap样式到界面
-3. 学习mysql
-
-4. grunt-beginner
-
-
-阅读书目
+need learn
+1. bootstrap 
+2. 学习mysql
+3. linux
+4. grunt/gulp
+5. git
+6. js高级
+7. java 
+8. 安卓开发
+9. php进阶篇 
+10. yii框架
+11. GUI
+book
 《ECMAScript 6简介》阮一峰
 
-
 ###############################
-learn grunt task
-# grunt serve 
-
-3. watch
+文档格式
+引用外部库 统一管理
 
 
-
-learn bower 
-1. bower ...
-
-learn test
-chai.js
-mocha
-phantomJS
-
-############################################
-markdown
-sublime
-
-#### 有序列表
-* 1
-* 2
-* 3
-#### 无序列表
-1. 1
-2. 2
-3. 3
-
-# markdown
-
-# 工作任务
-### bootstrap Tooltip 插件源码学习
-### 基于bootstrap的个人网站
-
-# vultr 
-1. 免费域名注册 (goodbike.ga)
-2. 
-
-#### 待学
-1. linux学习计划2
-2. git学习
-3. node.js包教不包会
-
-#### 任务
-1. 让node服务一直启动
 
 
