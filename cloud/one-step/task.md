@@ -27,13 +27,28 @@ need learn
 9. php进阶篇 
 10. yii框架
 11. GUI
+
 book
 《ECMAScript 6简介》阮一峰
+极客学院职业路径图
+中级
+jquery 
+jquery ui
+backbone
+angular
+react
 
 ###############################
 文档格式
 引用外部库 统一管理
+百度音乐下载
 
+####################
+构建框架
+1. 数组helper
 
+***********
+jquery 效果
+bootstrap
 
 
