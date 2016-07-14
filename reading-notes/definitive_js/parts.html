@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">	
+
+	Function.prototype.method = function(name, func){
+		if( this.prototype[name] ){
+			return;
+		}else{
+			this.prototype[name] = func;
+
+			return this;
+		}
+	}
+
+	function eventuality(that){
+		var registry = {};
+
+		that.on = function(type, method, parameters){
+			var handler = {
+				method: method,
+				parameters: parameters,
+			}
+
+			if(registry.hasOwnProperty(type)){
+				registry[type].push(handler);
+			}else{
+				registry[type] = [handler];
+			}
+
+			return this;
+		}
+
+		that.fire = function(event){
+			var array,
+				func,
+				handler,
+				i,
+				type = typeof event === "string" ? event : event.type;
+
+			if( registry.hasOwnProperty(type) ){
+				array = registry[type];
+
+				for (var i = 0; i < array.length; i++) {
+					handler = array[i]
+
+					func = handler.method;
+
+					if(typeof func === 'string'){
+						func = this[func];
+					}
+
+					func.apply(this, handler.parameters || [event]);
+				}
+			}
+
+			return this;
+		}
+
+		return that;
+	}
+</script>
+</html>
