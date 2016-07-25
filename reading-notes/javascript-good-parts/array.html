@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型</title>
+</head>
+<body>
+	<p>数组</p>
+	<p>Array</p>
+</body>
+<script type="text/javascript">
+	Function.prototype.method = function(name, func){
+		if( this.prototype[name] ){
+			return;
+		}else{
+			this.prototype[name] = func;
+
+			return this;
+		}
+	}
+
+	// 判断是否为数组
+	function is_array(value){
+		return value && 
+			typeof value === "object" &&
+			value.contructor === Array;
+	}
+
+	function is_array2(value){
+		return Object.prototype.toString.apply(value) === "[object Array]";
+	}
+
+	Array.method("reduce", function(f, value){
+		var i;
+		for(i=0; i<this.length; i+=1){
+			value = f(this[i], value);
+		}
+
+		return value;
+	})
+
+	var data = [4, 8, 15, 16, 23, 42];
+	function add(a, b){
+		return a + b;
+	}
+
+	function mult(a, b){
+		return a * b;
+	}
+
+	
+
+
+</script>
+</html>
