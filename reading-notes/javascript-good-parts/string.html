@@ -8,8 +8,41 @@
 	<h1>String的方法</h1>
 </body>
 <script type="text/javascript">
+	Function.prototype.method = function(name, func){
+		if( this.prototype[name] ){
+			return;
+		}else{
+			this.prototype[name] = func;
+
+			return this;
+		}
+	}
+
 	var oldareacode = /\((\d{3})\)/g;
 	var p = '(545)888-1212'.replace(oldareacode, "$1--");
 	
+	String.method("entityify", function(){
+		var character = {
+			'<' : '&lt;',
+			'>' : '&gt;',
+			'&' : '&amp;',
+			'"' : '&quot;'
+		}
+
+		// return function(){
+			return this.replace(/[<>&"]/g, function(c){
+				return character[c];
+			})
+		// }
+	})
+
+	console.log("<>".entityify());
+
+	var digits = '0123456789';
+	var a = digits.split("", 8);
+
+	console.log("digits.split() ", a);
+
+	console.log("'|a|b|c|'.split(/\|/) :", '|a|b|c|'.split(/\|/));
 </script>
 </html>
