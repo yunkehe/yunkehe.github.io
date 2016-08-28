@@ -14,6 +14,9 @@
 	<p>注意，是被调用的函数内部使用严格模式。</p>
 	<h4>显式绑定this</h4>
 	<p>call, apply</p>
+	<h4>new绑定和隐式绑定谁的优先级更高。</h4>
+	<p>把数组展开成参数。</p>
+	<h4>ES6中的箭头函数并不会使用四条标准的绑定规则，而是根据当前的词法作用域来决定this，具体来说，箭头函数会继承外层函数调用的this绑定，这其实和ES6之前代码中的self = this机制一样。</h4>
 </body>
 <script type="text/javascript">
 
@@ -78,5 +81,20 @@
 
 	[1, 2, 3].forEach(bar, obj)
 
+	// new绑定
+	function Foo(a){
+		this.a = a;
+	};
+
+	// var littleFoo = new obj3.foo(2);
+	// 创建一个新对象 并将其绑定到this上 
+
+	var obj3 = {
+		foo : Foo
+	};
+
+	var littleFoo = new obj3.foo("new.a");
+
+	// console.log( littleFoo.a );
 </script>
 </html>
