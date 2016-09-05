@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>underscore-1.8.2源码阅读-笔记</title>
+	<script src="../../js/lib/underscore-not-modified.js"></script>
+</head>
+<body>
+	<h4>判断一个值是否等于undefined时，可以用void 0替代undefind。</h4>
+	<h4>is方法</h4>
+	<ul>
+		<li>isFunction</li>
+		<li>
+			<h5>isNaN</h6>
+			<p>和原生的isNaN 函数不一样，如果变量是undefined，原生的isNaN 函数也会返回 true 。</p>
+			<p>原生NaN !== NaN </p>
+		</li>
+		<li>
+			<h5>_.times</h5>
+			<p>_.times(2, function(v,i){console.log(v)}, [1,2,3,4])，指定次数迭代。</p>
+		</li>
+		<li>
+			<h5>_.iteratee(value, [context])</h5>
+			<code>
+				var stooges = [{name: 'curly', age: 25}, {name: 'moe', age: 21}, {name: 'larry', age: 23}];
+				<br>
+				_.map(stooges, _.iteratee('age'));
+			</code>
+		</li>
+	</ul>
+</body>
+<script>
+	var testObj = {"name": "heke", "age": 26},
+		testArr = ["hello", "world", 1, 2, 3];
+
+	var _testObj = _(testObj),
+		_testArr = _(testArr);
+
+	var stooges = [{name: 'curly', age: 25}, {name: 'moe', age: 21}, {name: 'larry', age: 23}];
+
+	function test(){
+		
+		// Create a safe reference to the Underscore object for use below.
+		var _ = function(obj) {
+		  if (obj instanceof _) return obj;
+		  if (!(this instanceof _)) return new _(obj);
+		  this._wrapped = obj;
+		};
+
+		//  创建underscore包装对象
+		// 包装对象的 _wrapped属性指向js原始对象
+		var obj = {"name": "heke", "age": 26};
+		var _obj = _(obj);
+
+		console.log("obj === _obj._wrapped: ", _obj._wrapped === obj);
+	};
+
+	  // Internal function that returns an efficient (for current engines) version
+  // of the passed-in callback, to be repeatedly applied in other Underscore
+  // functions.
+  var optimizeCb = function(func, context, argCount) {
+    if (context === void 0) return func;
+    switch (argCount == null ? 3 : argCount) {
+      case 1: return function(value) {
+      	// 指定迭代值
+        return func.call(context, value);
+      };
+      case 2: return function(value, other) {
+        return func.call(context, value, other);
+      };
+      case 3: return function(value, index, collection) {
+        return func.call(context, value, index, collection);
+      };
+      case 4: return function(accumulator, value, index, collection) {
+        return func.call(context, accumulator, value, index, collection);
+      };
+    }
+    return function() {
+      return func.apply(context, arguments);
+    };
+  };
+
+</script>
+</html>
