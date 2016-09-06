@@ -1093,9 +1093,10 @@
   _.isMatch = function(object, attrs) {
     // var object = {"name": "heke", "age": 26, "company": "Noah"};
     // var attrs = {"name": "heke"};
-
     var keys = _.keys(attrs), length = keys.length;
+    // what does this use for ? if object is null, this is usefull;
     if (object == null) return !length;
+    // obj === Object(object) 
     var obj = Object(object);
     for (var i = 0; i < length; i++) {
       var key = keys[i];
@@ -1323,8 +1324,7 @@
   // `key:value` pairs.
   _.matcher = _.matches = function(attrs) {
     // var ready = _.matcher({selected: true, visible: true});
-    // var readyToGoList = _.filter(list, ready);
-    
+    // var readyToGoList = _.filter(list, ready);    
     attrs = _.extendOwn({}, attrs);
     return function(obj) {
       return _.isMatch(obj, attrs);

@@ -24,8 +24,26 @@
 			<code>
 				var stooges = [{name: 'curly', age: 25}, {name: 'moe', age: 21}, {name: 'larry', age: 23}];
 				<br>
-				_.map(stooges, _.iteratee('age'));
+				_.map(stooges, _.iteratee({"name": "curly"}));
 			</code>
+			<p>_.map(stooges, {"name": "curly"})，迭代器可以传入一个对象。</p>
+		</li>
+		<li>
+			<h5>isMatch</h5>
+			<p>
+				<code>
+					var object = {"name": "heke", "age": 26, "company": "Noah"};
+					<br>
+					var attrs = {"name": "heke"};
+					<br>
+					_.isMatch(object, attrs); 
+					<br>
+					=> true;
+				</code>
+			</p>
+		</li>
+		<li>
+			<h5>string.replace(/\d/g, function(match){ return "*"; })</h5>
 		</li>
 	</ul>
 </body>
@@ -55,7 +73,7 @@
 		console.log("obj === _obj._wrapped: ", _obj._wrapped === obj);
 	};
 
-	  // Internal function that returns an efficient (for current engines) version
+  // Internal function that returns an efficient (for current engines) version
   // of the passed-in callback, to be repeatedly applied in other Underscore
   // functions.
   var optimizeCb = function(func, context, argCount) {
