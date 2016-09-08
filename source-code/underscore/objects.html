@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>underscore-1.8.2源码阅读-笔记</title>
+	<script src="../../js/lib/underscore-not-modified.js"></script>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h4>初始化一个指定长度数组。</h4>
+		<p>
+			<code>var values = Array(length);</code>
+		</p>
+		<h4>_.pick</h4>
+		<p>
+			<code>
+				_.pick(testObj, function(v, k){ return _.isString(v)})
+			</code>
+		</p>
+	</div>
+</body>
+<script>
+	var testObj = {"name": "heke", "age": 26, "address": "Chengdu"},
+		testArr = ["hello", "world", 1, 2, 3];
+
+	var _testObj = _(testObj),
+		_testArr = _(testArr);
+
+	var stooges = [{name: 'curly', age: 25}, {name: 'moe', age: 21}, {name: 'larry', age: 23}];
+	
+	function testFunction(argument) {
+		// body...
+		this.name = "testFunction";
+		this.address = "Chengdu";
+	};
+
+</script>
+</html>
