@@ -1277,6 +1277,10 @@
     return obj === void 0;
   };
 
+  // _.isUndefined = function(obj, undefined){
+  //   return obj === undefined;
+  // };
+
   // Shortcut function for checking if an object has a given property directly
   // on itself (in other words, not on a prototype).
   _.has = function(obj, key) {
@@ -1324,7 +1328,8 @@
   // `key:value` pairs.
   _.matcher = _.matches = function(attrs) {
     // var ready = _.matcher({selected: true, visible: true});
-    // var readyToGoList = _.filter(list, ready);    
+    // var readyToGoList = _.filter(list, ready);
+    // _.extendOwn({}, attrs) 复制了一个attrs 
     attrs = _.extendOwn({}, attrs);
     return function(obj) {
       return _.isMatch(obj, attrs);
@@ -1367,6 +1372,8 @@
   var unescapeMap = _.invert(escapeMap);
 
   // Functions for escaping and unescaping strings to/from HTML interpolation.
+
+  
   var createEscaper = function(map) {
     var escaper = function(match) {
       return map[match];
