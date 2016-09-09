@@ -117,6 +117,8 @@
             l = keys.length;
         for (var i = 0; i < l; i++) {
           var key = keys[i];
+          // undefinedOnly, 只覆盖值为undefined的属性
+          // _.defaults();
           if (!undefinedOnly || obj[key] === void 0) obj[key] = source[key];
         }
       }

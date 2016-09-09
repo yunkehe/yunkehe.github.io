@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>functions函数</title>
+	<script src="../../js/lib/underscore-not-modified.js"></script>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		
+	<h4>_.partial()</h4>
+	<p>
+		<code>
+			var subtract = function(a, b) { return b - a; }; <br>
+			sub5 = _.partial(subtract, 5); <br>
+			sub5(20);
+		</code>
+	</p>
+	<h4>memorize方法,参考《Javascript高级程序设计》</h4>
+	<p>fibonacci函数</p>
+	<h4>_.defer()的使用场景？</h4>
+	<h4>after()和before()</h4>
+	<p>
+		<code>
+			var renderNotes = _.after(notes.length, render); <br>
+			_.each(notes, function(note) { <br>
+			  note.asyncSave({success: renderNotes}); <br>
+			});
+		</code>
+	</p>
+	</div>
+</body>
+<script>
+
+	var subtract = function(a, b) { 
+		var result = b - a;
+		console.log("subtract's result is: ", result);
+		return result; 
+	};
+
+	var test = function(){
+		console.log("hello I'm test!");
+	};
+
+	// partial
+	function hkPartial(func){
+		var args = Array.prototype.slice.call(arguments, 1);
+
+		return function(){
+			var newArgs = Array.prototype.slice.call(arguments, 0);
+			newArgs = args.concat(newArgs);
+
+			return func.apply(null, newArgs);
+		};
+
+	};
+
+	// delay
+	function hkDelay(func, wait, args ){
+		setTimeout(function(){
+			func.apply(null, args);
+		}, wait);
+	};
+
+	// once
+	function hkOnce(func){
+		var flag = true;
+
+		return function(){
+			if(flag){
+				func.apply(null, arguments);
+				flag = false;
+			}
+		};
+	};
+
+</script>
+</html>

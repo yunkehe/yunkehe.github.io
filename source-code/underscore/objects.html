@@ -28,10 +28,28 @@
 				_.pick(testObj, function(v, k){ return _.isString(v)})
 			</code>
 		</p>
+		<h4>_.defaults(),填充的对象只覆盖原有对象value为undefined的属性。</h4>
+		<p>
+			<code>var iceCream = {flavor: "chocolate"};
+			<br>
+			_.defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
+			</code>
+		</p>
+		<h4>_.tap()</h4>
+		<p>
+			<code>
+				_.chain([1,2,3,200]) <br>
+				  .filter(function(num) { return num % 2 == 0; }) <br>
+				  .tap(alert) <br>
+				  .map(function(num) { return num * num }) <br>
+				  .value();
+			</code>
+		</p>
 	</div>
 </body>
 <script>
 	var testObj = {"name": "heke", "age": 26, "address": "Chengdu"},
+		testObj2 = {"name": "heke", "age": 26, "address": "Chengdu", "company": {"name": "Noah", "site": "chengdu"}},
 		testArr = ["hello", "world", 1, 2, 3];
 
 	var _testObj = _(testObj),
