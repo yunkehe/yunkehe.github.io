@@ -7,5 +7,45 @@
 <body>
 	<h4>typeof null 结果是object.</h4>
 	<p>不同的对象在底层都表示为二进制，在Javascript中二进制前三位都为0的话会被判断为对object类型，null的二进制表示全是0，所以会返回object。</p>
+	<h4>字符串和String对象</h4>
+	<p>在必要时，语言会自动把字符串字面量转换成一个String对象。</p>
+	<h4>键访问和属性访问</h4>
+	<p><code>.a</code>属性访问，<code>["a"]</code>键访问</p>
+	<h4>属性和方法</h4>
+	<p>函数和对象的关系最多也只能说是间接关系。</p>
+	<h4>复制对象的问题</h4>
+	<p>浅复制和深复制。</p>
+	<h4>Property description</h4>
 </body>
+<script type="text/javascript">
+	function foo(){
+		console.log("foo");
+	};
+
+	var someFoo = foo;
+
+	var myObj = {
+		someFoo: foo
+	};
+
+	console.log("foo === myObj.someFoo: ", myObj.someFoo === foo);
+
+// object is safe in JSON
+	var newObj = JSON.parse( JSON.stringify(myObj) );
+
+// property description
+	var myObject = {};
+	Object.defineProperty(myObject, "a", {
+		value: 2,
+		writable: true,
+		cofigurable: true,
+		enumerable: true
+	});
+
+// preventExtensions
+	Object.preventExtensions( myObject );
+
+// check a is or not in myObject
+	("a" in myObject);
+</script>
 </html>
