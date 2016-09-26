@@ -16,6 +16,9 @@
 	<h4>复制对象的问题</h4>
 	<p>浅复制和深复制。</p>
 	<h4>Property description</h4>
+	<h4>遍历</h4>
+	<p>every和some的区别。</p>
+	<p>every运行到回调返回false时停止，some运行到回调函数返回true时停止。</p>
 </body>
 <script type="text/javascript">
 	function foo(){
@@ -47,5 +50,17 @@
 
 // check a is or not in myObject
 	("a" in myObject);
+
+// myObject.propertyIsEnumerable("a");
+
+// return all property no matter it is enumerable.
+// Object.getOwnPropertyNames(myObject)
+	
+	var myArray = [1, 2, 3];
+
+	for(var v of myArray){
+		console.log("v of myArray: ", v);
+	}
+
 </script>
 </html>
