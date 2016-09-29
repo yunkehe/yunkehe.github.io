@@ -33,8 +33,47 @@
 		// body...
 	}
 
+	Foo.prototype.myName = function(){
+		return this.name;
+	}
+
 	// foo.__proto__ ==== Foo.prototype;
 	// 创建一个对象 它的[[prototype]]关联到Foo.prototype
 	var foo = new Foo();
+
+	// foo.hasOwnProperty("constructor") foo本身并没有constructor属性
+
+	function Bar(){};
+
+	// 实际效果 Bar.prototype = {__proto__:Foo.prototype};
+	// 用Bar
+	Bar.prototype = Object.create(Foo.prototype);
+
+	var b = new Bar();
+	// instanceof 
+	// 在obj的整条[[prototype]]链中是否有指向Foo.prototype的对象。
+
+	// 字典
+	var obj = Object.create(null);
+
+	function Create(){
+		if(!Object.create){
+			Object.create = function(o){
+				function F(){};
+				F.prototype = o;
+				return new F();
+			}
+		}
+	}
+
+	function Dict(){
+		if(typeof Object.create === 'function'){
+			return Object.create(null);
+		}else{
+			var obj = {};
+			obj.__proto__ = null;
+			return obj;
+		}
+	}
 </script>
 </html>
