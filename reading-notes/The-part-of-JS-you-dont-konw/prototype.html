@@ -14,7 +14,7 @@
 	<p>第二、三条规则下，可用Object.defineProperty()向myObject添加foo，使用=无效。</p>
 </body>
 <script type="text/javascript">
-"use strict";
+// "use strict";
 
 	var obj = {};
 
@@ -75,5 +75,35 @@
 			return obj;
 		}
 	}
+
+	var Foo = {
+		bar : function bar(x){
+			if(x<10){
+				return bar(x*2);
+			}
+			return x;
+		}, 
+
+		baz: function(){
+			console.log("argument.callee", arguments.callee)
+		}
+	}
+
+	function A(){
+		var obj = {a: 2};
+		return Object.create(obj);
+	};
+
+	function B(){
+
+	};
+
+	function C(){
+
+	}
+
+	B.prototype = new A();
+
+	var b = new B();
 </script>
 </html>
