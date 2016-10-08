@@ -105,5 +105,25 @@
 	B.prototype = new A();
 
 	var b = new B();
+
+	// class
+	class D{
+		constructor(){
+			this.num = Math.random();
+		}
+		rand(){
+			console.log("Random: "+this.num);
+		}
+	}
+
+	var d1 = new D();
+	d1.rand();
+
+	D.prototype.rand = function(){
+		console.log("random: "+Math.random()*1000);
+	}
+	var d2 = new D();
+	d2.rand();
+	
 </script>
 </html>
