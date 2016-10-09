@@ -1,8 +1,62 @@
+*{
+	margin: 0;
+	padding: 0;
+}
 div{
-	width: 100px;
+	width: 100vw;
 	height: 100px;
 }
 .bg{
 	background: rgb(255, 128, 0);
-	background: linear-gradient(90deg, yellow, red);
+	/*background: linear-gradient(90deg, yellow, red);*/
+	background-color: lightgoldenrodyellow;
+}
+.bg2{
+	background: url() top right,
+				url() bottom right,
+				url() bottom left;
+	background-size: 2em 2em;
+	background-repeat: no-repeat;
+}
+.btn{
+	padding: .3em .8em;
+	border: 1px solid rgba(0, 0, 0, .1);
+	background: #58a linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+	border-radius: .2em;
+	box-shadow: 0 .05em .25em gray;
+	color:white;
+	text-shadow: 0 -.05em #335166;
+	font-size: 125%;
+	line-height: 1.5;
+}
+.btn.cancel{
+	background-color: #c00;
+}
+.btn.ok{
+	background-color: #6b0;
+}
+.no-border-color{
+	color:red;
+	border: 1px solid;
+}
+.callout{
+	position: relative;
+	background:skyblue;
+}
+.callout::before{
+	content: "";
+	position: absolute;
+	top: -.4em;
+	left: 1em;
+	padding: .35em;
+	background: inherit;
+	border-right: 0;
+	border-bottom: 0;
+	transform: rotate(45deg);
+}
+
+ul{--accent-color:red;}
+ol{--accent-color:green;}
+li{
+	background:var(--accent-color);
 }
