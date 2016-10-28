@@ -1,3 +1,9 @@
+/* html实体 enity */
+/* w3c star */
+.enity-star::before{
+	content: "\2727\2003\2003\2727\2003\2003\2727";
+}
+
 /* 字体 */
 .f12{
 	font-size: 12px;
