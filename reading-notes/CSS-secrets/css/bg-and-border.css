@@ -8,8 +8,39 @@ body{
 div{
 	width: 100px;
 	height: 100px;
+	margin: 40px 30px;
 }
 .bg{
 	border: 10px solid hsla(0, 0%, 100%, .5);
 	background: white;
+}
+.bg2{
+	border: 5px dotted orange;
+	background-color: green;
+	/*background-clip: padding-box;*/
+	margin-bottom: 20px;
+}
+.border1{
+	background-color: yellowgreen;
+	box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink;
+}
+.border2{
+	background-color: yellowgreen;
+	border: 10px solid #655;
+	outline: 5px dotted deeppink;
+	outline-offset: 5px;
+}
+.bg-pos{
+	background: url(../../../images/js.jpg) no-repeat bottom right green;
+	background-position: right 10px bottom 5px;
+}
+.bg-origin{
+	padding: 10px;
+	background: url(../../../images/js.jpg) no-repeat bottom right green;
+	background-origin: content-box;
+}
+.bg-origin{
+	padding: 10px;
+	background: url(../../../images/js.jpg) no-repeat bottom right green;
+	background-position: calc(100% - 15px) calc(100% - 10px);
 }
