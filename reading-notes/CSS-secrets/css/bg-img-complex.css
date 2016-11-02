@@ -1,0 +1,28 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #999;
+}
+div{
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: 10px;
+}
+.cloth{
+	background: #fff;
+	background-size: 30px 30px;
+	background-image: linear-gradient(90deg,
+		                rgba(200, 0, 0, .5) 50%, transparent 0),
+		              linear-gradient(
+		              	rgba(200, 0, 0, .5) 50%, transparent 0);
+}
+.cloth2{
+	background: #58a;
+	background-image: 
+		linear-gradient(white 1px, transparent 0),
+		linear-gradient(90deg, white 1px, transparent 0);
+	background-size: 30px 30px;
+}

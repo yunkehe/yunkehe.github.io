@@ -9,6 +9,8 @@ div{
 	width: 100px;
 	height: 100px;
 	margin: 40px 30px;
+	float: left;
+
 }
 .bg{
 	border: 10px solid hsla(0, 0%, 100%, .5);
@@ -18,7 +20,7 @@ div{
 	border: 5px dotted orange;
 	background-color: green;
 	/*background-clip: padding-box;*/
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 }
 .border1{
 	background-color: yellowgreen;
@@ -43,4 +45,23 @@ div{
 	padding: 10px;
 	background: url(../../../images/js.jpg) no-repeat bottom right green;
 	background-position: calc(100% - 15px) calc(100% - 10px);
+}
+.bg-linear{
+	/*background: linear-gradient(#fb3 20%, #58a 80%);*/
+	/*background: linear-gradient(#fb3 33.3%, #58a 33.3%, #58a 66.6%, yellowgreen 0);*/
+	/*background: linear-gradient(to right, #fb3 33.3%, #58a 33.3%, #58a 66.6%, yellowgreen 0);*/
+	/*background: linear-gradient(45deg, #fb3 33.3%, #58a 33.3%, #58a 66.6%, yellowgreen 0);*/
+	/*background: linear-gradient(45deg, 
+		#fb3 25%, #58a 0, #58a 50%, #58a 50%,#fb3 0, #fb3 75%, #58a 0);*/
+	/*background: repeating-linear-gradient(45deg, #fb3, #fb3 15px, #58a 15px, #58a 30px);*/
+	background: #58a;
+	background-image: repeating-linear-gradient(30deg,
+						hsla(0, 0%, 100%, .1),
+						hsla(0, 0%, 100%, .1) 15px,
+						transparent 0, transparent 30px);
+	/*background: repeating-linear-gradient(45deg, #f00, #ff0 10%, #f00 15%);*/
+	/*-webkit-background-size: 100% 45px;*/
+	/*background-size: 100% 45px;*/
+	/*background-size: 45px 100%;*/
+	/*background-size: 45px 45px;*/
 }
