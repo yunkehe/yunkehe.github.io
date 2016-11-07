@@ -26,3 +26,30 @@ div{
 		linear-gradient(90deg, white 1px, transparent 0);
 	background-size: 30px 30px;
 }
+.cloth3{
+	background: #58a;
+	background-image:
+		linear-gradient(white 2px, transparent 0),
+		linear-gradient(90deg, white 2px, transparent 0),
+		linear-gradient(hsla(0, 0%, 100%, .3) 1px, transparent 0),
+		linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px, transparent 0);
+
+	background-size: 75px 75px, 75px 75px,
+					15px 15px, 15px 15px;
+}
+.bg-radial-1{
+	background: #655;
+	background-image: radial-gradient(tan 30%, transparent 0);
+	-webkit-background-size: 30px 30px;
+	background-size: 30px 30px;
+	/*background-repeat: no-repeat;*/
+}
+.chess-box{
+	background: #eee;
+	background-image: 
+		linear-gradient(#bbb 50%, transparent 0),
+		linear-gradient(90deg, #eee 50%, #bbb 0);
+	-webkit-background-size: 30px 30px;
+	background-size: 30px 30px;
+	/*background-position: 15px 15px;*/
+}
