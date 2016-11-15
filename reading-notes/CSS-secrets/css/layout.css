@@ -152,3 +152,59 @@ body{
 .radius3{
 	border-radius: 100% 0 0 0 / 100% 0 0 0;
 }
+
+/* 平行四边形 */
+.box{
+	width: 100px;
+	height: 100px;
+	/*background:skyblue;*/
+}
+/*.parallelogram{
+	transform: skewX(-45deg);
+}*/
+.parallelogram{
+	position: relative;
+	text-align: center;
+}
+.parallelogram::before{
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background:#58a;
+	transform: skewX(-30deg);
+	z-index: -1;
+}
+
+.picture{
+	margin: 100px;
+	width: 75px;
+	height: 75px;
+	background: #f1f1f1;
+	transform: rotate(45deg);
+	overflow: hidden;
+}
+.picture > img{
+	width: 100%;
+	transform: rotate(-45deg) scale(1.42);
+}
+img.clip{
+	width: 200px;
+	height: 120px;
+	-webkit-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+	transition: 1s -webkit-clip-path;
+}
+img.clip:hover{
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0, 100%);
+}
+
+/* 切角 */
+.diamond-clip{
+	width: 100px;
+	height: 200px;
+	background: #d1d1d1;
+	background: 
+		linear-gradient(45deg, transparent 5px, #d1d1d1 0);
+}
