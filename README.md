@@ -12,7 +12,7 @@
 > 引用 
 [百度](http://www.baidu.com)
 
-![ke icon](http://static.dev.anoah.com/uploads/users/66/08/287621.jpg?1464934193)
+![头像](http://static.anoah.com/uploads/users/66/08/287621.jpg)
 
 ###### 代码
 `
