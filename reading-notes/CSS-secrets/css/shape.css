@@ -1,1 +1,50 @@
+/* common.css */
 /* trapezoid */
+.trapezoid-heke{
+	height: 50px;
+	width: 100px;
+	position: relative;
+	margin:100px;
+	background: #58a;
+}
+.trapezoid-heke::before{
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	border: 50px solid transparent;
+	border-bottom-color: skyblue;
+	position: absolute;
+	right: 50%;
+	top: -100%;
+	z-index: -1;
+}
+.tab-trapezoid{
+	position: relative;
+	display: inline-block;
+	padding: .5em 1em .35em;
+	color: white;
+}
+.tab-trapezoid::before{
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	background: #58a;
+	transform:perspective(.5em) rotateX(5deg);
+}
+.perspective-container-heke{
+	perspective: 0;
+}
+.perspective-heke{
+	width: 100px;
+	height: 80px;
+	background:#58a;
+	perspective: 100px;
+	transform: translateZ(1px);
+	-moz-perspective: 100px;
+	-webkit-perspective: 100px;
+}
