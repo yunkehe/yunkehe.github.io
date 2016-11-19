@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>饼图</title>
+	<link rel="stylesheet" href="css/shape.css">
+</head>
+<body>
+	<div class="pie-animate">pie</div>
+	<div class="pie">20%</div>
+	<div class="pie">60%</div>
+</body>
+<script type="text/javascript">
+	var pieList = document.querySelectorAll('.pie');
+	var pieArr = Array.prototype.slice.call(pieList);		
+	pieArr.forEach(function(v, i){
+		var p = parseFloat(v.textContent);
+		v.style.animationDelay = '-' + p + 's';
+	});
+
+</script>
+</html>
