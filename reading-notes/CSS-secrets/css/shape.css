@@ -95,3 +95,23 @@
 @keyframes bg{
 	50% {background: #655;}
 }
+
+/* pie-svg */
+/*@keyframes fillup{
+	to {stroke-dasharray: 158 158;}
+}*/
+circle{
+	fill:yellowgreen;
+	stroke:#655;
+	stroke-width:32;
+	/*stroke-dasharray: 0 158;*/
+	/*animation: fillup 6s linear infinite;*/
+}
+/* 间隙长度 2*PI*25  */
+svg{
+	width: 100px; height: 100px;
+	transform: rotate(-90deg);
+	background:yellowgreen;
+	border-radius: 50%;
+}
+

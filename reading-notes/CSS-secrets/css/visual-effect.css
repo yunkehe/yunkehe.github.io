@@ -1,0 +1,17 @@
+/* 视觉效果 */
+.box{
+	width: 200px;
+	height: 160px;
+	background:yellowgreen;
+	margin: 10px;
+}
+.box-shadow{
+	box-shadow: 0px 5px 4px -4px black;
+}
+.box-shadow2{
+	box-shadow: 3px 3px 6px -3px black;
+}
+.box-shadow-2{
+	box-shadow: -5px 0 5px -5px black,
+				5px 0 5px -5px black;
+}
