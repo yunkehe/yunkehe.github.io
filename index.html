@@ -2,9 +2,110 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Nice to meet you!</title>
+	<title>小球</title>
+	<style>
+		.container{
+			margin: 0 auto;
+			width: 800px;
+			height: 600px;
+			background-color: #f1f1f1;
+		}
+	</style>
 </head>
 <body>
-	<h1>你好，世界！</h1>
+	<div class="container">
+		<canvas id="mycanvas" width="800" height="600"></canvas>
+	</div>
 </body>
+<script>
+	var mycanvas = document.getElementById("mycanvas");
+	var ctx = mycanvas.getContext('2d');
+	var maxWidth = mycanvas.width,
+		maxHeight = mycanvas.height;
+
+	function drawCircle(x, y, radius, color){
+		ctx.beginPath();
+		ctx.arc(x, y, radius, 0, Math.PI*2);
+		ctx.fillStyle = color;
+		ctx.fill();
+		ctx.closePath();
+	}
+
+	// 返回max到min之间的整随机数
+	function getRandom(max, min){
+		return Math.floor( Math.random()*(max-min)+min );
+	}
+
+	var colors = ["#33B5E5", "#0099CC", "#AA66CC", "#9933CC", "#99CC00", "#669900", "#FFBB33", "#FF8800", "#FF4444", "#CC0000"];
+
+	function Ball(){
+		this.forwardX = true;
+		this.forwardY = true;
+
+		this.x = 400;
+		this.y = 300;
+		this.radius = getRandom(30, 10);
+		this.color = colors[getRandom(colors.length, 0)];
+
+		var speed = getRandom(8, 3);
+
+		// 根据角度计算随机方向
+		var direction = Math.random()*Math.PI*2;
+
+		this.moveX = Math.cos(direction)*speed;
+		this.moveY = Math.sin(direction)*speed;
+
+	}
+
+	Ball.prototype.move = function(){
+
+		if(this.forwardX){
+			this.x += this.moveX;
+			if(this.x >= (maxWidth - this.radius) || this.x <= this.radius){
+				this.forwardX = false;
+			}
+
+		}else{
+			this.x -= this.moveX;
+			if(this.x >= (maxWidth - this.radius) || this.x <= this.radius){
+				this.forwardX = true;
+			}
+		}
+
+		if(this.forwardY){
+			this.y += this.moveY;
+			if(this.y >= (maxHeight - this.radius) || this.y <= this.radius ){
+				this.forwardY = false;
+			}
+		}else{
+			this.y -= this.moveY;
+			if(this.y >= (maxHeight - this.radius) || this.y <= this.radius){
+				this.forwardY = true;
+			}
+		}
+
+		drawCircle(this.x, this.y, this.radius, this.color);
+		
+	}
+
+	function start(){
+		var balls = [];
+		for(var i=0; i<20; i++){
+			balls[i] = new Ball();
+		}
+
+		setInterval(function(){
+			ctx.clearRect(0, 0, mycanvas.width, mycanvas.height);
+	
+			for(var j=0; j<balls.length; j++){
+				balls[j].move();
+			}
+
+		}, 20)
+
+	}
+
+	start();
+
+</script>
 </html>
