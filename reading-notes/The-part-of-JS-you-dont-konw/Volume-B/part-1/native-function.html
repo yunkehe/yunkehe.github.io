@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生函数</title>
+</head>
+<body>
+	<h2>封装对象包装</h2>
+</body>
+<script type="text/javascript">
+	// 封装对象包装
+	var a = new String('hello world');
+	var b = a.valueOf();
+
+	// Date.now
+	if(!Date.now){
+		Date.now = function () {
+			return (new Date()).getTime();
+		}
+	}
+
+	// ES6 符号
+	var mysym = Symbol("my own symbol");
+	console.log('mysym', mysym);
+
+	var obj ={};
+	obj[mysym] = 'foor';
+
+	// 将原型作为默认值
+	function isThisCool(vals, fn, rx){
+		vals = vals || Array.prototype;
+		fn = fn || Function.prototype;
+		rx = rx || RegExp.prototype;
+
+		return rx.test(vals.map( fn ).join(''));
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
