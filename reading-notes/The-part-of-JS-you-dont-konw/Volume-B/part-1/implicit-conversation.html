@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>隐式强制类型转换</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// + 操作符 是拼接字符串还是数字算术计算
+	// 规范 如果其中一个操作数是对象，则首先对其调用ToPrimitive抽象操作
+	// 该抽象操作再调用[[DefaultValue]]
+	var arr1 = [1, 2],
+		arr2 = [3, 4];
+
+	// [] + {} 为什么与 {} + []不一样？
+
+	var a = {
+		valueOf: function () { return 42;},
+		toString: function(){ return 4}
+	}
+
+	a + ''; // 42
+	a.toString(); // 4
+
+	// 有且仅有一个为true时
+	// boolean 到数字的强制类型转换
+	function onlyOne(){
+		var sum = 0;
+		for(var i=0; i<arguments.length; i++){
+			if(arguments[i]){
+				sum += arguments[i];
+				// sum += Number(!!arguments[i]);
+			}
+		}
+
+		return sum == 1;
+	}
+
+</script>
+</html>

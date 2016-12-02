@@ -54,5 +54,40 @@
 	var f0 = new Number(0);
 	var fs = new String('');
 
+	
+	// 显式强制类型转换
+	var num = 42;
+	var b = num.toString();
+
+	// crazy exapmle
+	var result = 1 + - + + + - + 1;
+
+	if(!Date.now){
+		Date.now = function(){
+			return +new Date();
+		}
+	}
+
+	// ~x = -(x+1) 怎么来的 
+	// 补码 0 - 0000 0001 =  1111 1111 
+	// 00000000 - 其中一个正数的补码）=（这个数相反数的补码）
+	// 00000000 - 00000001=? 如何计算-1的补码 0 - 1
+	// 0000 0000 可看做 1111 1111 + 0000 0001 (进位丢失)
+	// 1111 1111 + 0000 0001 - 000 0001 
+	// 0减去一个数的补码来得到另一个数的补码
+	// 1111 1111 - 一个数的补码 + 0000 0001=它相反数的补码
+	//  1111 1111 - 一个数的补码 = 它的反码
+	// [一篇介绍的很详细的博客](http://blog.csdn.net/wenxinwukui234/article/details/42119265)
+	var s  = 'hello world';
+
+	if(~s.indexOf('lo')){
+		// true
+	};
+
+	// 解析和转换 parseInt先将参数转换为字符串再解析
+	var hour = '08';
+	hour = parseInt(hour);
+
+	parseInt(1/0, 20); // ? parseInt('Infinity', 20) => parseInt('I', 20); 0,1,...,9,a,b,...,i
 </script>
 </html>
