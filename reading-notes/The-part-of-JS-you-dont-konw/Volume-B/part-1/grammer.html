@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>语法</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 声明语句 decalaration statement
+	// 表达式语句 exression statement
+	// 代码块的结果值 为最后一条语句的结果值
+	var z;
+	if(true){
+		z = 2 + 3;
+	}
+
+	// delete何时返回true/false
+	
+	var x = y = 2;
+	// 会创建一个全局变量d;
+
+	// continue / break 从内层循环跳转到外层循环
+	foo: for(var i=0; i<4; i++){
+		for(var j=0; j<4; j++){
+			if(j == i){
+				// 执行foo循环的下一轮循环
+				continue foo;
+			}
+
+			if((j * i) % 2 == i){
+				continue;
+			}
+
+			console.log(i, j);
+		}
+	}
+
+	// JSON-P 将JSON数据封装为函数调用
+
+	// 误导
+	[] + {}; // '[object object]'
+	{} + []; // {}; +[];
+
+	// 一个复杂的例子 运算符优先级 && 高于 || 高于 ? :
+	var a = 42;
+	var b = 'foo';
+	var c = false;
+	var complex = a && b || c ? c || b ? a : c && b : a;
+	// var complex = (a && b || c) ? (c || b ? a : c && b) : a;
+
+	// 自动分号
+	// do while循环后必须带分号
+</script>
+</html>
