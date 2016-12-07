@@ -52,5 +52,44 @@
 
 	// 自动分号
 	// do while循环后必须带分号
+
+	// continue try finally
+	// finally 中的return 会覆盖try中的return 
+	for(var i=0; i<10; i++){
+		try{
+			continue;
+		}finally{
+			console.log('i: ', i);
+		}
+	}
+
+	var value = '42';
+	switch(true){
+		case value == 10:
+			console.log('10 or "10"');
+			break;
+
+		case value == 42:
+			console.log('42 or "42"');
+			break;
+
+		default:;
+	}
+
+	// 内联script
+
+</script>
+<script type="text/javascript">
+	var code = '<script>alert("hello world")</sc'+'ript>';
+	// 最大调用栈层数
+	function computeMaxCallStackSize(){
+		try{
+			return 1 + computeMaxCallStackSize();
+		}catch(e){
+			return 1;
+		}
+	}
+
+	console.log('最大调用栈层数: ', computeMaxCallStackSize())
 </script>
 </html>

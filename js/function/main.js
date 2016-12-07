@@ -1,4 +1,4 @@
-function(){
+function pagination(){
 
 	/*
 	 * slice翻页
@@ -61,3 +61,16 @@ function(){
 
 
 };
+
+/**
+ * 
+ */
+function computeMaxCallStackSize(){
+	try{
+		return 1 + computeMaxCallStackSize();
+	}catch(e){
+		return 1;
+	}
+};
+
+console.log('最大调用栈层数: ', computeMaxCallStackSize())
