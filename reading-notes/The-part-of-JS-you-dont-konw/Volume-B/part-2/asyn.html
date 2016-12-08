@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步：现在与将来</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function now(){
+		return 21;
+	}
+
+	function later(){
+		answer = answer * 2;
+		console.log('Meaning of life: ', answer);
+	}
+
+	var answer = now();
+	setTimeout(later, 1000);
+
+	// console.log() 什么时候会延迟是游移不定的 
+	// var a = JSON.stringify(a); console.log(); 把对象序列号到一个字符串中。
+
+	// 多个线程 可以共享内存 
+	// Javascript从不跨线程共享数据
+
+	// 並發
+	function ajax(url, cb){
+		// ajax
+	}
+
+	// 交互
+	var res = [];
+
+	function response(data){
+		res.push(data);
+	}
+
+	ajax('url1', response);
+	ajax('url2', response);
+
+	var a, b;
+
+	function foo(x){
+		a = x *2;
+		b && baz();
+	}
+
+	function bar(y){
+		b = y * 2;
+		a && baz();
+	}
+
+	function baz(){
+		console.log(a + b);
+	}
+
+	ajax('url1', foo);
+	ajax('url2', bar);
+
+	// 如何避免baz() 時 a或b未定義？
+
+	var res = [];
+
+	function response(data){
+		var chunk = data.splice(0, 1000);
+
+		res = res.concat(
+				data.map(function(val){
+					return val * 2;
+				})
+			);
+
+		if(data.length > 0){
+			setTimeout(response, 0);
+		}
+	}
+
+	console.log('task A');
+
+	setTimeout(function(){
+		console.log('task B');
+	}, 0);
+
+	function go(){
+		console.log('task C');
+	}
+
+	go();
+</script>
+</html>
