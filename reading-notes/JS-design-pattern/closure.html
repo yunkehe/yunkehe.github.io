@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+</head>
+<body>
+	<ul>
+		<li><span>变量的生存周期。</span></li>
+		<li>经典例子。</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var nodes = document.getElementsByTagName('li');
+
+	for(var i=0,length = nodes.length; i<length; i++){
+		(function(i){
+			nodes[i].onclick = function function_name() {
+				alert(i);
+			};
+		}(i));
+	}
+</script>
+</html>
