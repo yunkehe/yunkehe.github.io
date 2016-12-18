@@ -9,6 +9,13 @@
 		<li><span>变量的生存周期。</span></li>
 		<li>经典例子。</li>
 	</ul>
+	<h2>闭包的作用</h2>
+	<ol>
+		<li>封装变量</li>
+		<li>延续局部变量的寿命</li>
+	</ol>
+	<h3>什么是内存泄露？</h3>
+	<p>分配给应用的内存没有被垃圾回收，不能再次使用。</p>
 </body>
 <script type="text/javascript">
 	var nodes = document.getElementsByTagName('li');
@@ -20,5 +27,106 @@
 			};
 		}(i));
 	}
+
+	// 缓存机制
+	function mult(){
+		var cache = {};
+		var caculate = function(){
+			var a = 1;
+			for(var i=0,l=arguments.length; i<l; i++){
+				a = a * arguments[i];
+			}
+
+			return a;
+		};
+
+		return function(){
+			var args = Array.prototype.join.call(arguments, ',');
+			if(cache[args]) return cache[args];
+
+			return cache[args] = caculate.apply(null, arguments);
+		};
+	}
+
+	// img用于数据上报
+	function report(url){
+		var img = new Image();
+		img.src = url;
+	}
+
+	var report = (function(url){
+		var imgs = [];
+		return function(){
+			var img = new Image();
+			imgs.push(img);
+			img.src = url;
+		};
+
+	})('url');
+
+	// 高阶函数例子
+	var getSingle = function(fn){
+		var ret;
+		return function(){
+			return ret || (ret = fn.apply(this, arguments));
+		};
+	};
+
+	var getScript = getSingle(function(){
+		return document.createElement('script');
+	});
+
+	var script1 = getScript(); 
+	var script2 = getScript(); 
+
+	// AOP面向切面编程
+	Function.prototype.before = function(beforefn){
+		var self = this;
+		return function(){
+			beforefn.apply(this, arguments);
+			return self.apply(this, arguments);
+		};
+	};
+
+	Function.prototype.after = function(afterfn){
+		var self = this;
+		return function(){
+			var ret = self.apply(this, arguments);
+			afterfn.apply(this, arguments);
+			return ret;
+		};
+	};
+
+	function f1(){
+		console.log(1);
+	}
+
+	function f2(){
+		console.log(2);
+	}
+
+	function f3(){
+		console.log(3);
+	}	
+
+	var f = f2.before(f1).after(f3);
+	f();
+
+	// uncurrying
+	Function.prototype.uncurrying = function(){
+		var self = this;
+		return function(){
+			var obj = Array.prototype.shift.call(arguments);
+			return self.apply(obj, arguments);
+		};
+	};
+
+	// uncurrying的另一种实现
+	Function.prototype.uncurrying = function(){
+		var self = this;
+		return function(){
+			return Function.prototype.call.apply(self, arguments);
+		};
+	};
 </script>
 </html>
