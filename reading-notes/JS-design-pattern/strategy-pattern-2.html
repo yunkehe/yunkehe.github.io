@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>策略模式2</title>
+</head>
+<body>
+	<form id="register-form" action="http://xxx.com/register">
+		请输入用户名：<input type="text" name="username" />
+		请输入密 码：<input type="text" name="password" />
+		请输入手机号：<input type="text" name="telephone" />
+		<button>提交</button>
+	</form>
+</body>
+<script type="text/javascript">
+
+	// 校验规则
+	var strategies = {
+		isNoneEmpty: function(value, errMsg){
+			if(value === '') return errMsg;
+		},
+		minLength: function(value, length, errMsg){
+			if(value.length > length ) return errMsg;
+		},
+		isPhoneNumber: function(value, errMsg){
+			if( !/(^1[3|4|5|8][0-9]{9}$)/.test(value) ) return errMsg;
+		}
+	};
+
+	function Validator(){
+		this.cache = [];
+	};
+
+	Validator.prototype.add = function(dom, rule, errMsg){
+		var arg = rule.split(':');
+		this.cache.push(function(){
+			var strategy = arg.shift();
+			arg.unshift(dom.value);
+			arg.push(errMsg);
+			return strategies[strategy].apply(dom, arg);	
+		})
+	};
+
+	Validator.prototype.start = function(){
+		for(var i=0,validataFunc; validataFunc = this.cache[i++];){
+			var msg = validataFunc();
+			if(msg){
+				return msg;
+			}
+		};
+	}
+
+	var validataFunc = function(){
+		var validator = new Validator();
+		validator.add(registerForm.username, 'isNoneEmpty', '用户名不能为空');
+		validator.add(registerForm.password, 'minLength:6', '密码不能少于6位');
+		validator.add(registerForm.telephone, 'isPhoneNumber', '请输入正确的手机号码');
+
+		var errMsg = validator.start();
+		return errMsg;
+	};
+
+	var registerForm = document.getElementById('register-form');
+
+	registerForm.onsubmit = function(){
+		var errMsg = validataFunc();
+		if(errMsg){
+			alert(errMsg);
+			return false;
+		}
+	};
+</script>
+</html>
