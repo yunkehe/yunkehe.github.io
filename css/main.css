@@ -105,6 +105,15 @@ table.contact tr td:first-child{
 .tab-content a{
   color: #34d753;
 }
+
+.canvas-content{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
 /* 移动端 */
 /*.navigation li {
     float: left;
