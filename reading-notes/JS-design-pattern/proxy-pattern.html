@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>代理模式1</title>
+</head>
+<body>
+	<h3>虚拟代理</h3>
+	<p><em>把一些开销很大的对象，延迟到真正需要它的时候才去创建。</em></p>
+	<h3>单一职责原则</h3>
+	<p><em>一个类（通常包括对象和函数），应该仅有一个引起它变化的原因。</em></p>
+</body>
+<script type="text/javascript">
+	// 图片预加载
+	// img先用一张loading图片占位 然后异步加载图片 图片加载好了之后再把它填充到img里
+	var myImage = (function() {
+		var img = document.createElement('img');
+		document.body.append(img);
+
+		return {
+			setSrc: function(src){
+				img.src = src;
+			}
+		}
+	})();
+
+	var proxyImage = (function(src){
+		var img = new Image();
+		img.onload = function(){
+			myImage.setSrc(this.src);
+		};
+
+		return {
+			setSrc: function(src){
+				myImage.setSrc('../../images/js.jpg');
+				img.src = src;
+			}
+		}
+	})();
+
+	proxyImage.setSrc('https://avatars2.githubusercontent.com/u/8363503?v=3&s=40');
+
+	// 合并http请求
+</script>
+</html>
