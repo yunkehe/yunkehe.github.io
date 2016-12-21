@@ -3,7 +3,9 @@
 .enity-star::before{
 	content: "\2727\2003\2003\2727\2003\2003\2727";
 }
-
+body{
+	font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
+}
 /* 字体 */
 .f12{
 	font-size: 12px;

@@ -1,0 +1,112 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.clearfix::after{
+  content: " ";
+  display:block;
+  height: 0;
+  clear: both;
+}
+
+/* yunkehe.github.io */
+a{
+  text-decoration: none;
+}
+body{
+  font-family: Helvetica,sans-serif;
+  background: #191919;
+  font-size: 15px;
+  line-height: 1.4667;
+  margin: 0px;
+}
+.wrapper{
+  margin-left: 100px;
+}
+header{
+  margin-top: 20px;
+  margin-bottom: 100px;
+  color: #f4f4ec;
+}
+header h1{
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: bold;
+}
+header p{
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+ul.navigation{
+  float: left;
+  width: 200px;
+}
+ul.navigation li a{
+  color: #565553;
+  font-size: 70px;
+}
+ul.navigation li a:hover{
+  color: #2dc6ad;
+}
+.tab-content{
+  display: none;
+  margin-left: 200px;
+  padding-top: 20px;
+  font-size: 16px;
+  color: #f3f3f3;
+}
+table.contact tr td:first-child{
+  width: 50px;
+}
+.tab-content a{
+  color: #34d753;
+}
+/* 移动端 */
+/*.navigation li {
+    float: left;
+    margin-right: 10px;
+}*/
