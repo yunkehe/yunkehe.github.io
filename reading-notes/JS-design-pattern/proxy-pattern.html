@@ -41,5 +41,49 @@
 	proxyImage.setSrc('https://avatars2.githubusercontent.com/u/8363503?v=3&s=40');
 
 	// 合并http请求
+	
+	// 缓存代理
+	var mult = function(){
+		console.log('开始计算乘积');
+		var a = 1;
+		for(var i=0, length=arguments.length; i<length; i++){
+			a = a * arguments[i];
+		}
+		return a;
+	};
+
+	// 缓存功能由代理实现
+	var proxyMult = (function(){
+		var cache = {};
+
+		return function(){
+			var args = Array.prototype.join.call(arguments, ',');
+			console.log('cache[args', cache[args]);
+			if(cache[args]){
+				return cache[args];
+			}
+			return cache[args] = mult.apply(this, arguments);
+		}
+	})();
+
+	console.log( proxyMult(1, 2, 3) );
+	console.log( proxyMult(1, 2, 3) );
+
+	// 缓存代理计算工厂
+	var createProxyMult = function(fn){
+		var cache = {};
+
+		return function(){
+			var args = Array.prototype.join.call(arguments, ',');
+			console.log('cache[args', cache[args]);
+			if(cache[args]){
+				return cache[args];
+			}
+			return cache[args] = fn.apply(this, arguments);
+		}
+	};
+
+	var multProxy = createProxyMult(mult);
+	
 </script>
 </html>
