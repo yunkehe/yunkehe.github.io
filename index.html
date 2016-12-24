@@ -18,14 +18,8 @@
 				<li><a href="javascript:void(0)" class="jump-btn" flag="contact">联系</a></li>
 			</ul>
 			<!-- 内容 -->
-			<div class="tab-content about clearfix">
-				<div class="intro-box by-article">
-					<h4>&nbsp;</h4>
-					<em>Hello, my friend! <br>
-				    	It's my great honor that you are here,<br>
-				    	I'm hunting a new job of web frontend developer<br>
-					    If you have some interest, contact me!
-				   </em>
+			<div class="tab-content about clearfix" flag="0">
+				<div class="intro-box by-article" id="intro-article-content">
 				</div>
 				<div class="intro-box by-pic">
 					<img src="images/haha.png">
@@ -58,6 +52,9 @@
 	</div>
 	<div class="canvas-content" id="canvas-wrapper">
 		<!-- <canvas id="mycanvas" width="600" height="400"></canvas> -->
+	</div>
+	<div class="audio-box">
+		<audio src="audio/keypress.wav" id="keypress-audio" loop autopreload ></audio>
 	</div>
 </body>
 <script src="js/main.js"></script>

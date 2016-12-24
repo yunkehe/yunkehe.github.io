@@ -120,6 +120,15 @@ table.contact tr td:first-child{
   min-width: 200px;
   width: 40%;
 }
+.intro-box.by-article p {
+    /*width: 210px;*/
+    line-height: 1.9;
+}
+.intro-box.by-article::after {
+    content: " ";
+    display: block;
+    height: 1px;
+}
 .intro-box.by-pic{
   text-align: center;
   position: relative;
@@ -145,6 +154,7 @@ table.contact tr td:first-child{
   /*left: 0;*/
   left: -18px;
   top: 150px;
+  animation: gentlyMove3 2s linear infinite;
 }
 .tags-box li:nth-child(4){
   /*right: 20px;
@@ -163,10 +173,17 @@ table.contact tr td:first-child{
   top: 150px;*/
   right: 8px;
   top: 154px;
-  animation: gentlyMove 2s linear infinite;
+  /*animation: gentlyMove6 2s linear infinite;*/
 }
-
-@-moz-keyframes gentlyMove{
+/*left: -18px;
+  top: 150px;*/
+@keyframes gentlyMove3{
+  25% {left: -23px;top:155px;}
+  50% {left: -28px;top:150px;}
+  75% {left: -23px;top:145px;}
+  100% {left: -18px;top:150px;}
+}
+@keyframes gentlyMove6{
   25% {right: 13px;top:159px;}
   50% {right: 18px;top:154px;}
   75% {right: 13px;top:144px;}

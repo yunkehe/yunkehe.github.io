@@ -41,11 +41,24 @@ function init(id) {
 		}
 
 		document.querySelector('.tab-content.'+flag).style.display = 'block';
-		if(flag == 'about'){
+
+		if(flag == 'about' ){
+			if( domCache.Dabout.getAttribute('flag') == 1 ){
+				return;
+			}
+			domCache.Dabout.setAttribute('flag', 1);
+			domCache.Daudio.play();
 			canvasObj.wrapper.style.display = 'none';
+			// editingObj.initEditContent(false);
+			// startEdit(0, 0);
+			startEdit(0, 0);
 		}else{
+			domCache.Dabout.setAttribute('flag', 0);
+			domCache.Daudio.pause();
 			canvasObj.wrapper.style.display = 'block';
 		}
+
+		editingObj.initEditContent(false);
 	}
 
 	for(var i=0; i<jumpBtn.length; i++){
@@ -62,7 +75,7 @@ function createCanvas(){
 	var canvasWrapper = document.getElementById('canvas-wrapper'),
 		bRect = canvasWrapper.getBoundingClientRect();
 
-		console.log('params', bRect)
+		// console.log('params', bRect)
 
 	var myCanvas = document.createElement("canvas");
 		myCanvas.setAttribute("width", bRect.width - 17 );
@@ -173,5 +186,76 @@ function start(){
 }
 // 動畫效果
 start();
+
+// 打字效果
+var editingObj = {
+	words : [' Hello, my friend!',
+				"It's my great honor that you are here,",
+				"I'm hunting a web frontend developer job,",
+				'If you have some interest, contact me!',
+				'-- From Yours'],
+	content: 'intro-article-content',
+	// true 添加内容 false 删除内容
+	initEditContent: function(flag){
+		var content = document.getElementById(this.content);
+
+		if( flag ){
+			for(var x=0,l=this.words.length; x<l; x++){
+				var p = document.createElement('p'),
+					em = document.createElement('em');
+				p.appendChild(em);
+				content.appendChild(p);
+			}
+		}else{
+			content.querySelectorAll('em').forEach(function(v){
+				v.innerHTML = '';
+			});
+		}
+	}
+};
+
+var startEdit = (function editing(){
+	var words = this.words || '';
+	var content = document.getElementById(this.content);
+	var i = 0, j=0;
+
+	var newWords = words.map(function(v){ return v.split('')});
+
+	this.initEditContent(true);
+
+	var Qem = content.querySelectorAll('em');
+	
+console.log(newWords)
+	return function inputOne(x, y){
+		if( typeof x == 'number' ) i = x;
+		if( typeof y == 'number' ) j = y;
+
+		var line = newWords[i];
+
+		if( line[j] ){
+			if(line[j] == ' ') line[j] = '&nbsp;';
+			Qem[i].innerHTML = (Qem[i].innerHTML + line[j]);
+			setTimeout(inputOne, 100);
+			j++;
+		}else{
+			j = 0;
+			if(newWords[++i]){
+				// line = words[i].split('');
+				inputOne();
+			}else{
+				domCache.Daudio.pause();
+				return;
+			}
+		}
+	};
+
+}).call(editingObj);
+
+// dom cache
+var domCache = {
+	Daudio: document.getElementById('keypress-audio'),
+	Dabout: document.querySelector(".tab-content.about")
+}
+
 
 
