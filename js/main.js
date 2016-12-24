@@ -207,9 +207,10 @@ var editingObj = {
 				content.appendChild(p);
 			}
 		}else{
-			content.querySelectorAll('em').forEach(function(v){
-				v.innerHTML = '';
-			});
+			// chrome中不能用foreach
+			for(var x=0, l = this.words.length; x<l; x++){
+				content.querySelectorAll('em')[x].innerHTML = '';
+			}
 		}
 	}
 };
@@ -225,17 +226,17 @@ var startEdit = (function editing(){
 
 	var Qem = content.querySelectorAll('em');
 	
-console.log(newWords)
+// console.log(newWords)
 	return function inputOne(x, y){
 		if( typeof x == 'number' ) i = x;
 		if( typeof y == 'number' ) j = y;
 
 		var line = newWords[i];
 
-		if( line[j] ){
+		if( line && line[j] ){
 			if(line[j] == ' ') line[j] = '&nbsp;';
 			Qem[i].innerHTML = (Qem[i].innerHTML + line[j]);
-			setTimeout(inputOne, 100);
+			setTimeout(inputOne, 130);
 			j++;
 		}else{
 			j = 0;
