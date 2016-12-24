@@ -5,6 +5,73 @@
 	<title>发布订阅模式</title>
 </head>
 <body>
-	
+	<p><em>发布订阅模式又叫观察者模式，它定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知。</em></p>
 </body>
+<script type="text/javascript">
+
+	// 通用发布订阅功能
+	var Publish = (function(){
+		var clientList = {},
+			listen,
+			trigger,
+			remove;
+
+		listen = function(key, fn){
+			if( !clientList[key] ){
+				clientList[key] = [];
+			}
+
+			clientList[key].push(fn);
+		};
+
+		trigger = function(){
+			var key = Array.prototype.shift.call(arguments),
+				fns = clientList[key];
+
+			if( !fns || !fns.length) return false;
+
+			for(var i=0,fn; fn = fns[i++];){
+				fn.apply( this, arguments);
+			}
+		};
+
+		// 取消事件订阅
+		remove = function(key, fn){
+			var fns = clientList[key];
+
+			if(!clientList[key]) return false;
+			
+			if(!fn){
+				fns && (fns.length = 0);
+			}else{
+				for(var l = fns.length-1; l>=0; l--){
+					if(fns[l] === fn){
+						fns.splice(l, 1);
+					}
+				}
+			}
+		};
+
+		return {
+			listen: listen,
+			trigger: trigger,
+			remove: remove
+		};
+
+	})();
+
+	var salesOffices = {};
+
+
+	Publish.listen('xiaoming', function(price, suqare){
+		console.log('xiaoming: ', price, suqare);
+	});
+
+	Publish.listen('xiaohong', function(price, suqare){
+		console.log('xiaohong: ', price, suqare);
+	});
+
+	Publish.trigger('xiaoming', 2000, 88);
+
+</script>
 </html>
