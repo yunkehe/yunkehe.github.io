@@ -21,6 +21,7 @@ function init(id) {
 		    li = document.createElement('li');
 		
 		a.href = projects[i].href;
+		a.target = '_blank';
 		a.innerText = projects[i].name;
 	
 		li.appendChild(a);

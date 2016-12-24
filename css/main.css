@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+ /*http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -6,10 +6,9 @@
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
+del, dfn, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
+b, u, i, center,dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
@@ -58,7 +57,7 @@ a{
   text-decoration: none;
 }
 body{
-  font-family: Helvetica,sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
   background: #191919;
   font-size: 15px;
   line-height: 1.4667;
@@ -68,8 +67,8 @@ body{
   margin-left: 100px;
 }
 header{
-  margin-top: 20px;
-  margin-bottom: 100px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   color: #f4f4ec;
 }
 header h1{
@@ -90,7 +89,7 @@ ul.navigation li a{
   font-size: 70px;
 }
 ul.navigation li a:hover{
-  color: #2dc6ad;
+  color: #aaaa33;
 }
 .tab-content{
   display: none;
@@ -100,10 +99,11 @@ ul.navigation li a:hover{
   color: #f3f3f3;
 }
 table.contact tr td:first-child{
-  width: 50px;
+  width: 60px;
 }
 .tab-content a{
-  color: #34d753;
+  /*color: #34d753;*/
+  color: #33b5e5;
 }
 
 .canvas-content{
@@ -114,8 +114,67 @@ table.contact tr td:first-child{
   bottom: 0;
   z-index: -1;
 }
+.tab-content
+.intro-box{
+  float: left;
+  min-width: 200px;
+  width: 40%;
+}
+.intro-box.by-pic{
+  text-align: center;
+  position: relative;
+}
+.tags-box li{
+  position: absolute;
+  background: #0098c8;
+  color: #fff;
+  padding: .5em 1.5em;
+}
+.tags-box li:nth-child(1){
+  /*left: 20px;
+  top: 0;*/
+  left: 40px;
+  top: -50px;
+}
+.tags-box li:nth-child(2){
+  left: 0;
+  /*top: 70px;*/
+  top: 45px;
+}
+.tags-box li:nth-child(3){
+  /*left: 0;*/
+  left: -18px;
+  top: 150px;
+}
+.tags-box li:nth-child(4){
+  /*right: 20px;
+  top: 0;*/
+  right: 40px;
+  top: -41px;
+}
+.tags-box li:nth-child(5){
+ /* right: 0;
+  top: 70px;*/
+  right: -13px;
+  top: 59px;
+}
+.tags-box li:nth-child(6){
+ /* right: 0;
+  top: 150px;*/
+  right: 8px;
+  top: 154px;
+  animation: gentlyMove 2s linear infinite;
+}
+
+@-moz-keyframes gentlyMove{
+  25% {right: 13px;top:159px;}
+  50% {right: 18px;top:154px;}
+  75% {right: 13px;top:144px;}
+  100% {right: 8px;top:154px;}
+}
+/* sass 计算*/
 /* 移动端 */
 /*.navigation li {
     float: left;
     margin-right: 10px;
-}*/
+}
