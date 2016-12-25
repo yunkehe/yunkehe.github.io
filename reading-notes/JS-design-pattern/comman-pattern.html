@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>命令模式</title>
+</head>
+<body>
+	<button id="btn1">按钮1</button>
+	<button id="btn2">按钮2</button>
+	<button id="btn3">按钮3</button>
+</body>
+<script type="text/javascript">
+	var btn1 = document.getElementById('btn1');
+	var btn2 = document.getElementById('btn2');
+	var btn3 = document.getElementById('btn3');
+
+	function setCommand(btn, command) {
+		btn.onclick = function(){
+			command.excute();
+		}
+	}
+
+	var MenuBar = {
+		refresh: function(){
+			// 刷新菜单页面
+		}
+	};
+
+	var RefreshMenuBarCommand = function(receiver){
+		return {
+			excute: function(){
+				receiver.refresh();
+			},
+
+		} 
+
+	};
+
+	var refreshMenuBarCommand = RefreshMenuBarCommand(MenuBar);
+
+	setCommand(btn1, refreshMenuBarCommand);
+
+</script>
+</html>
