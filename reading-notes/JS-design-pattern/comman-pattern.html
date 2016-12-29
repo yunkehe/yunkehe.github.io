@@ -134,5 +134,20 @@
 			command();
 		}
 	}
+
+	// 宏命令
+	var MacroCommand = function(){
+		return {
+			commandList: [],
+			add: function(command){
+				this.commandList.push(command);
+			},
+			excute: function(){
+				for(var i=0, command; command = this.commandList[i++];){
+					command.excute();
+				}
+			}
+		}
+	}
 </script>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组合模式</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 组合模式的例子 扫描文件夹
+	var Folder = function(name) {
+		this.name = name;
+		this.files = [];
+		this.parent = null;
+	}
+
+	Folder.prototype.add = function(file){
+		file.parent = this;
+		this.files.push(file);
+	};
+
+	Folder.prototype.remove = function(){
+		if( !this.parent ){
+			return;
+		}
+		for(var files = this.parent.files, l=files.length - 1; l>=0 ;l--){
+			var file = files[l];
+			if( file === this){
+				files.splice(l, 1);
+			}
+		}
+	}
+
+	Folder.prototype.scan = function(){
+		console.log('开始扫描文件夹：', this.name);
+		for(var i=0, file, files = this.files; file = files[i++];){
+			file.scan();
+		}
+	}
+
+	/* file */
+	var File = function(name){
+		this.name = name;
+		this.parent = null;
+	}
+
+	File.prototype.add = function(file){
+		throw new Error('file 不能添加文件！');
+	}
+
+	File.prototype.scan = function(){
+		console.log('scan: ', this.name);
+	}
+
+	File.prototype.remove = function(){
+		if( !this.parent ){
+			return;
+		}
+		for(var files = this.parent.files, l=files.length - 1; l>=0 ;l--){
+			var file = files[l];
+			if( file === this){
+				files.splice(l, 1);
+			}
+		}
+	}
+
+	/* start */
+	var folder1 = new Folder('学习资料');
+	var folder2 = new Folder('Javascript');
+	var folder3 = new Folder('mysql');
+
+	var file1 = new File('设计模式');
+	var file2 = new File('精通jQuery');
+	var file3 = new File('重构与设计模式');
+
+	folder2.add(file2);
+	folder3.add(file3);
+
+	folder1.add(folder2);
+	folder1.add(folder3);
+	folder1.add(file1);
+
+	// folder1
+</script>
+</html>
