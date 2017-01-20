@@ -66,5 +66,49 @@
 		};
 
 	})();
+
+	// 地图小气泡
+	var toolTipFactory = (function(){
+		var toolTipPool = [];
+
+		return {
+			create: function(){
+				if(toolTipPool.length === 0){
+					var div = document.createElement('div');
+					document.body.appendChild(div);
+					return div;
+				}else{
+					return toolTipPool.shift();
+				}
+			},
+
+			recover: function(toolTipDom){
+				return toolTipPool.push(toolTipDom);
+			}
+		}
+	})();
+
+	var arr = [];
+	// str = ['A'][0] 返回 'A' 
+	// str = ['A'][1] 返回 undefined 
+	for(var i=0, str; str=['A', 'B'][i++];){
+		console.log('each i: ', i);
+		var toolTip = toolTipFactory.create();
+		toolTip.innerHTML = str;
+		arr.push(toolTip);
+	}
+
+	for(var i=0,toolTip; toolTip=arr[i++];){
+		toolTipFactory.recover(toolTip);
+	}
+
+	for(var i=0, str; str=['A', 'B', 'C', 'D', 'E', 'F'][i++];){
+		var toolTip = toolTipFactory.create();
+		toolTip.innerHTML = str;
+		// arr.push(toolTip);
+	}
+
+	// 通用对象池实现
+
 </script>
 </html>
