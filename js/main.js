@@ -1,12 +1,10 @@
 /* 关于 作品链接 联系 */
 // 项目链接
 function init(id) {
-	// {
-
-	// 	'name': 'nodejs博客',
-	// 	'href': 'http://yunheke.tk:9000/'
-	// }
-	    projects = [{
+	projects = [{
+		'name': 'nodejs博客',
+		'href': 'http://45.32.66.129:9001/'
+	},{
 		'name': '诺亚教育平台教师PC端',
 		'href': 'http://e.anoah.com'
 	},{
