@@ -154,7 +154,7 @@ table.contact tr td:first-child{
   /*left: 0;*/
   left: -18px;
   top: 150px;
-  animation: gentlyMove3 2s linear infinite;
+  /*animation: gentlyMove3 2s linear infinite;*/
 }
 .tags-box li:nth-child(4){
   /*right: 20px;
