@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
-    <border></border>
+    <!-- <border></border> -->
+    <border-radius></border-radius>
   </div>
 </template>
 
 <script>
-import border from './border.vue';
+import border from './border';
+import borderRadius from './borderRadius';
 
 export default {
   name: 'HelloWorld',
@@ -15,7 +17,8 @@ export default {
     }
   },
   components:{
-    border
+    border,
+    borderRadius
   }
 }
 </script>
