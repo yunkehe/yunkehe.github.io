@@ -1,24 +1,30 @@
 <template>
   <div class="hello">
     <!-- <border></border> -->
-    <border-radius></border-radius>
+    <!-- <border-radius></border-radius> -->
+    <!-- <layout-flex></layout-flex> -->
+    <flex-grid></flex-grid>
   </div>
 </template>
 
 <script>
 import border from './border';
 import borderRadius from './borderRadius';
+import layoutFlex from './layoutFlex';
+import flexGrid from './flexGrid';
 
 export default {
   name: 'HelloWorld',
   data () {
-    return {
+    return {  
       msg: 'Welcome to Your Vue.js App'
     }
   },
   components:{
     border,
-    borderRadius
+    borderRadius,
+    layoutFlex,
+    flexGrid
   }
 }
 </script>
