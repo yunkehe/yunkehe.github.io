@@ -1,0 +1,87 @@
+<blockquote><p>本教程仅供学习使用</p></blockquote>
+
+<h2>什么是shadowsocks</h2>
+
+<p>Shadowsocks是<a href="https://github.com/clowwindy/shadowsocks">clowwindy</a>这位大神开源的用来翻墙的一种解决方案，更详细的介绍可查看<a href="https://vc2tea.com/whats-shadowsocks/">这里</a>。</p>
+
+<p>它的基本原理如下：</p>
+
+<p><img alt="whats-shadowsocks.png" src="https://upload-images.jianshu.io/upload_images/1717745-9e88e185c26d4c74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></p>
+
+<h2>准备工作</h2>
+
+<p>简单来说，我们只需要准备两个东西：</p>
+
+<ol><li><em>SS local</em> — Shadowsocks本地客户端</li><li><em>SS Server</em> — Shadowsocks远程服务端</li></ol>
+
+<h2>客户端</h2>
+
+<p>搭建客户端非常简单，
+1. 根据你的操作系统<a href="https://github.com/zhoudaxiaa/ss-client">下载客户端</a>并安装运行
+2. 配置客户端，添加一台服务器，然后填写<strong>服务器IP、服务器端口（默认8388）、密码、加密方式、代理端口（默认1080）</strong>，至于服务器IP是哪里来的，接下来马上介绍。</p>
+
+<p><img alt="ss-local-setting.png" src="https://upload-images.jianshu.io/upload_images/1717745-c84335685211ad1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></p>
+
+<h2>服务端</h2>
+
+<p>从Shadowsocks原理图上，你可以看的，SS Server是位于墙外的，所以，你要先准备一台墙外的服务器，当然，没有必要买贵的，但是，也没有免费的午餐。个人推荐使用<a href="https://baike.baidu.com/item/VPS/11053576?fr=aladdin">VPS</a>，这里有一些<a href="http://www.laozuo.org/myvps">推荐的VPS</a>。</p>
+
+<p>我购买的是Vultr家的，支持支付宝付款，$3.5一个月，配置如下，当然，还有更便宜的商家，这里就不介绍了。</p>
+
+<p><img alt="vultr-vps.png" src="https://upload-images.jianshu.io/upload_images/1717745-6f2c4b6d40d2bf75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></p>
+
+<p>下面的操作都基于<strong>Ubuntu 14.04x64</strong>，其他系统差别不大，主要分下面几个步骤：
+1. 安装<code>python-pip</code>，系统一般自带了python和pip，但是版本会比较老，为了避免后面遇到问题，建议更新一下包的索引文件
+~~~
+更新索引文件
+sudo apt-get update</p>
+
+<p>安装pip
+sudo apt-get install python-pip
+~~~
+2. 安装Shadowsocks服务端
+<code></code>`
+使用pip安装SS Server
+sudo pip install shadowsocks</p>
+
+<p>安装完成后可查看shadowsocks版本
+ssserver --version
+<code>
+3. 创建Shadowsocks配置文件，我在自己的家目录`/home/yunkehe`下创建了一个配置文件`shadowsocks.json`，也可以放在其他地方，文件名也可以更改，但格式必须是 *json*
+</code></p>
+
+<blockquote><p>/home/yunkehe/shadowsocks.json
+<code>
+然后编辑shadowsocks.json，输入以下内容并保存
+</code>
+{
+    &quot;server&quot;:&quot;my<em>server</em>ip&quot;,
+    &quot;server<em>port&quot;:8388,
+    &quot;local</em>address&quot;: &quot;127.0.0.1&quot;,
+    &quot;local<em>port&quot;:1080,
+    &quot;password&quot;:&quot;mypassword&quot;,
+    &quot;timeout&quot;:300,
+    &quot;method&quot;:&quot;aes-256-cfb&quot;,
+    &quot;fast</em>open&quot;: false
+}
+<code>
+*my_server_ip* 填自己购买的VPS的IP，*password* 随便写，*method* 是加密方式，默认填&quot;aes-256-cfb&quot;，这里配置好之后，**客户端**就使用这里填写的**服务器IP、密码、加密**。
+4. 使用配置文件启动Shadowsocks服务端
+</code>
+sudo ssserver -c /home/yunkehe/shadowsocks.json -d start
+<code>
+关闭服务，使用下面的命令
+</code>
+sudo ssserver -c /home/yunkehe/shadowsocks.json -d stop
+<code></code>`</p></blockquote>
+
+<h2>启动客户端</h2>
+
+<p>服务端搭建完成后，勾选<strong>启动系统代理</strong>就可以了， 代理模式选<strong>PAC模式</strong>，只在访问被墙的网站时才代理，访问国内网站就不需要代理了。
+<img alt="ss-local-start.png" src="https://upload-images.jianshu.io/upload_images/1717745-494d1c72c78ab2e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+如果没有问题，就可以愉快的上网了。</p>
+
+<p><img alt="free-search.png" src="https://upload-images.jianshu.io/upload_images/1717745-cebe696ce6ac0186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></p>
+
+<p>参考文档
+<a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">Shadowsocks 使用说明</a></p>
